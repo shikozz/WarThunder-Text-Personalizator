@@ -39,7 +39,7 @@ namespace WTTextPersonalizator
             DialogResult result = folderDlg.ShowDialog();
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                label.Content = folderDlg.SelectedPath;
+                label.Text = folderDlg.SelectedPath;
             }
         }
 
@@ -47,13 +47,13 @@ namespace WTTextPersonalizator
         {
             try
             {
-                string path = label.Content.ToString() + "/lang/menu.csv";
+                string path = label.Text + "/lang/menu.csv";
                 string testStr = "";
                 using (StreamReader reader = new StreamReader(path))
                 {
                     testStr = reader.ReadToEnd();
                 }
-                WorkingFrame wf = new WorkingFrame(label.Content.ToString());
+                WorkingFrame wf = new WorkingFrame(label.Text);
                 wf.Show();
                 this.Close();
             }

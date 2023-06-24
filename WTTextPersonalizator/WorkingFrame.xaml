@@ -9,17 +9,31 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" x:Name="pathLabel"/>
         <StackPanel Grid.Row="1" Orientation="Vertical">
-            <Label Content="Изменения в файле menu.csv"/>
+            <Label Content="Изменения в файле menu.csv (В бой, Техника уничтожена, Попадание и т.д.)"/>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Начальное значение"/>
                 <TextBox Width="150" x:Name="init1" BorderBrush="Black" BorderThickness="1"/>
                 <Label Content="Конечное значение"/>
                 <TextBox x:Name="text1" Width="150" BorderBrush="Black" BorderThickness="1"/>
-                <Button x:Name="change1" Click="change1_Click" Width="100" Content="Поменять"/>
+                <Button x:Name="change1" Click="change1_Click" Width="100" Content="Поменять" Margin="5,0,0,0"/>
+                <Button x:Name="clear1" Width="100" Content="Очистить" Click="clear1_Click" Margin="5,0,0,0"/>
+            </StackPanel>
+            <Label Content="Если текст не поменялся - повторите изменение. В игре присутствуют несколько надписей с одинаковыми значениями"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <Label Content="Изменения в файле ui.csv (Миссия выполнена, Миссия провалена)"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Начальное значение"/>
+                <TextBox Width="150" x:Name="init2" BorderBrush="Black" BorderThickness="1"/>
+                <Label Content="Конечное значение"/>
+                <TextBox x:Name="text2" Width="150" BorderBrush="Black" BorderThickness="1"/>
+                <Button x:Name="change2" Click="change2_Click" Width="100" Content="Поменять" Margin="5,0,0,0"/>
+                <Button x:Name="clear2" Width="100" Content="Очистить" Click="clear2_Click" Margin="5,0,0,0"/>
             </StackPanel>
             <Label Content="Если текст не поменялся - повторите изменение. В игре присутствуют несколько надписей с одинаковыми значениями"/>
         </StackPanel>

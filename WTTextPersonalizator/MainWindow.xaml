@@ -9,7 +9,7 @@
     <Grid>
         <StackPanel Orientation="Vertical">
             <Button Content="Выбрать папку с игрой" Width="150" Height="50" Click="Button_Click"/>
-            <Label x:Name="label" Height="50" BorderBrush="Black" BorderThickness="1"/>
+            <TextBox x:Name="label" Height="50" BorderBrush="Black" BorderThickness="1"/>
             <Button Content="Запустить" Height="50" Click="Button_Click_1"/>
         </StackPanel>
     </Grid>
