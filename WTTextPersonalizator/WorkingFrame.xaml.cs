@@ -53,6 +53,7 @@ namespace WTTextPersonalizator
                 MessageBox.Show("Изменено успешно!");
                 init1.Text = "";
                 text1.Text = "";
+                readFiles();
             }
             else
             {
