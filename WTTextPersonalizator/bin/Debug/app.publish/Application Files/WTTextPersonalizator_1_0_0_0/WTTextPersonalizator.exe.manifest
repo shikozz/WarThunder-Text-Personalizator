@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="WTTextPersonalizator.exe" version="1.0.0.0" publicKeyToken="6d24db0a6032dc94" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="images.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="WTTextPersonalizator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="WTTextPersonalizator.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          Параметры манифеста UAC
+          Если нужно изменить уровень контроля учетных записей Windows, замените 
+          узел requestedExecutionLevel одним из следующих значений.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+        Если нужно использовать виртуализацию файлов и реестра для обратной
+             совместимости, удалите узел requestedExecutionLevel.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WTTextPersonalizator.exe" size="434096">
+      <assemblyIdentity name="WTTextPersonalizator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>DcsPQ2YIrxjbEUaJK8BmbxhoeqyJmf7BdkB7IuC22ag=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="images.ico" size="209762">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>doFOSC876VS2dpLsqot7XW1Pty31zqv5XZmwE0tZQlY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="WTTextPersonalizator.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=ALEX-PC\alexc" issuerKeyHash="7ae9a318178ea0a1552dc8e7b109209042742fbc" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>96ZPNZ7Vij/6xMx61akY+QZIAoll11+ZkKi91PY88OA=</DigestValue></Reference></SignedInfo><SignatureValue>rASP/zne+FaRTr5vRhJQfUhBhyukNBVNltL0IzX13uLG9l68jILnn1z6ixBlEmnoV6uHKtGp10AFtBkTZl+EXQaQ7ZjZ6DR1NOc2IJwBrSOPuLqxf1QoclgPI4xVs+/kAg6g7nK5Cua7Pr8PuzGGLNcYSeVpcrWW945LTMHyXvM=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>3dBtqJvHoo7S2n4Rm5auxZyBK7DBe2XAWLmyU5yNJTC1tvixKOIX8fAGjqaahxv6TYNuoKrzWMaH5QVRar/zpS9yCEKUg4FdipusG5lmbYyMXlxwrOlh0RrvMbdvkAE6NF/x9W+/acS1vSpoytQrb+QyCvM351Jkoyy8YbRbXbU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="e0f03cf6d4bda890995fd76589024806f918a9d57accc4fa3f8ad59e354fa6f7" Description="" Url=""><as:assemblyIdentity name="WTTextPersonalizator.exe" version="1.0.0.0" publicKeyToken="6d24db0a6032dc94" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=ALEX-PC\alexc</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>wtq3JNo+kpS5LbSPqXVqJfve/s6cKfC8Au7HeEUgDPs=</DigestValue></Reference></SignedInfo><SignatureValue>zRgKlnfjh5WAwcNUKxHx5452Wu7CjuzdwAAvZMV1yJ921bbeTzeZuPd/+KfJUfOpqPQLiZ5PiFfge0xAWZ9lygZSaKa2I0VAlAzpUkgln3YNz2r22ipKUoC4MZyhYN+S/Jud3WTXo8OZZLRh6xXqvSIVmFFufRHYs4Yt98H+e6o=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>3dBtqJvHoo7S2n4Rm5auxZyBK7DBe2XAWLmyU5yNJTC1tvixKOIX8fAGjqaahxv6TYNuoKrzWMaH5QVRar/zpS9yCEKUg4FdipusG5lmbYyMXlxwrOlh0RrvMbdvkAE6NF/x9W+/acS1vSpoytQrb+QyCvM351Jkoyy8YbRbXbU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBzTCCATagAwIBAgIQdQHSjL5N/IhGCc4weHN6NzANBgkqhkiG9w0BAQsFADAlMSMwIQYDVQQDHhoAQQBMAEUAWAAtAFAAQwBcAGEAbABlAHgAYzAeFw0yMzA2MjQyMTU5MDNaFw0yNDA2MjQwMzU5MDNaMCUxIzAhBgNVBAMeGgBBAEwARQBYAC0AUABDAFwAYQBsAGUAeABjMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDd0G2om8eijtLafhGblq7FnIErsMF7ZcBYubJTnI0lMLW2+LEo4hfx8AaOppqHG/pNg26gqvNYxoflBVFqv/OlL3IIQpSDgV2Km6wbmWZtjIxeXHCs6WHRGu8xt2+QATo0X/H1b79pxLW9KmjK1Ctv5DIK8zfnUmSjLLxhtFtdtQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAK5H/e82AfCVYTvt+8MrPk5AozPXljdJiiHg4piT5yrx80Uk/W+DCeup9FMaTexjoUf+Drhva8IwWjxFNh1GHzJOsHWdHdtZj3iLjPHi3Ls6jOcC7tceJhYIGcvsVwW4JbpO3kk/+5NrbewMWJVO587IeYXeFptl5nonUDX4gak8</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

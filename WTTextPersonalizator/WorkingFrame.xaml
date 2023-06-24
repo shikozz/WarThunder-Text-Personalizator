@@ -1,0 +1,27 @@
+﻿<Window x:Class="WTTextPersonalizator.WorkingFrame"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WTTextPersonalizator"
+        mc:Ignorable="d"
+        Title="WTTP" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" x:Name="pathLabel"/>
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <Label Content="Изменения в файле menu.csv"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Начальное значение"/>
+                <TextBox Width="150" x:Name="init1" BorderBrush="Black" BorderThickness="1"/>
+                <Label Content="Конечное значение"/>
+                <TextBox x:Name="text1" Width="150" BorderBrush="Black" BorderThickness="1"/>
+                <Button x:Name="change1" Click="change1_Click" Width="100" Content="Поменять"/>
+            </StackPanel>
+            <Label Content="Если текст не поменялся - повторите изменение. В игре присутствуют несколько надписей с одинаковыми значениями"/>
+        </StackPanel>
+    </Grid>
+</Window>

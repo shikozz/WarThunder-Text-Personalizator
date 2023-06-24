@@ -1,0 +1,16 @@
+﻿<Window x:Class="WTTextPersonalizator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WTTextPersonalizator"
+        mc:Ignorable="d"
+        Title="WTTP" Height="200" MaxHeight="200" MinHeight="200" Width="300" MaxWidth="300" MinWidth="300">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Button Content="Выбрать папку с игрой" Width="150" Height="50" Click="Button_Click"/>
+            <Label x:Name="label" Height="50" BorderBrush="Black" BorderThickness="1"/>
+            <Button Content="Запустить" Height="50" Click="Button_Click_1"/>
+        </StackPanel>
+    </Grid>
+</Window>
