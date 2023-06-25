@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WTTextPersonalizator"
         mc:Ignorable="d"
-        Title="WTTP" Height="450" Width="800">
+        Title="WTTP" MinHeight="450" MaxHeight="450" Height="450" Width="800" MinWidth="800" MaxWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -47,8 +47,9 @@
             <Label Content="Если текст не поменялся - повторите изменение. В игре присутствуют несколько надписей с одинаковыми значениями"/>
         </StackPanel>
         <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Orientation="Horizontal">
-            <Button IsEnabled="False" x:Name="saveConfig" Click="saveConfig_Click" Content="Сохранять конфиг" Height="30" VerticalAlignment="Bottom" Width="150"/>
+            <Button x:Name="saveConfig" Click="saveConfig_Click" Content="Сохранять конфиг" Height="30" VerticalAlignment="Bottom" Width="150"/>
             <Label x:Name="configStatus" Content="Cохраняется" Foreground="Green"/>
+            <Button x:Name="instruction" Content="Инструкция" Margin="480,0,0,0" Click="instruction_Click"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -58,6 +58,9 @@ namespace WTTextPersonalizator
             combo2.Items.Add("Миссия провалена");
             combo2.Items.Add("удерживайте, чтобы начать ремонт танка");
             combo2.Items.Add("начать тушить пожар");
+
+            /*Properties.Settings.Default.ShowInstruction= true;
+            Properties.Settings.Default.Save();*/
         }
 
         public void readFiles()
@@ -295,10 +298,19 @@ namespace WTTextPersonalizator
             }
             else
             {
-                configStatus.Content = "Не сохраняется";
-                configStatus.Foreground = new SolidColorBrush(Colors.Red);
-                saveCfg = false;
+                if(MessageBox.Show("Вы уверены, что хотите отключить сохранение конфигурации?\nВ таком случае для обновления надписей вам \nпридется указать текущее значение!","Отключить конфигурацию", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK) 
+                {
+                    configStatus.Content = "Не сохраняется";
+                    configStatus.Foreground = new SolidColorBrush(Colors.Red);
+                    saveCfg = false;
+                }
             }
+        }
+
+        private void instruction_Click(object sender, RoutedEventArgs e)
+        {
+            Instruction newWindow = new Instruction();
+            newWindow.Show();
         }
     }
 }

@@ -1,0 +1,28 @@
+﻿<Window x:Class="WTTextPersonalizator.Instruction"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WTTextPersonalizator"
+        mc:Ignorable="d"
+        Title="Instruction" Height="450" Width="600">
+    <ScrollViewer>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Инструкция" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"/>
+        <StackPanel Grid.Row="1" Margin="0,0,0,25">
+            <TextBlock TextWrapping="Wrap" Text="1. Укажите путь к игре. Либо нажав на кнопку, либо указав путь вручную (пример на изображении)"/>
+            <Image Source="instr1.png" Height="200"/>
+            <Label Content="При нажатии Запомнить, путь к игре будет сохранен"/>
+            <TextBlock TextWrapping="Wrap" Text="2. В главном окне вам предстоит указать надпись которую вы хотите заменить и надпись на которую будет произведена замена"/>
+            <Image Source="instr2.png"/>
+                <Label Content="Вы можете выбрать частые варианты из соответствующего меню"/>
+                <TextBlock TextWrapping="Wrap" Text="3. Если активировано сохранение конфига, то если вы захотите изменить свои подписи, то вам не придется указывать их, просто укажите изначальное значение и то на которое вы хотите его заменить"/>
+            </StackPanel>
+        <Button Grid.Row="1" VerticalAlignment="Bottom" Content="Закрыть" x:Name="closeInstr" Click="closeInstr_Click"/>
+    </Grid>
+    </ScrollViewer>
+</Window>

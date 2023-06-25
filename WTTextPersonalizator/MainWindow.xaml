@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WTTextPersonalizator"
         mc:Ignorable="d"
-        Title="WTTP" Height="200" MaxHeight="200" MinHeight="200" Width="300" MaxWidth="300" MinWidth="300">
+        Title="WTTP" Height="220" MaxHeight="220" MinHeight="220" Width="300" MaxWidth="300" MinWidth="300">
     <Grid>
         <StackPanel Orientation="Vertical">
             <Button Content="Выбрать папку с игрой" Width="150" Height="50" Click="Button_Click"/>
             <TextBox x:Name="label" Height="50" BorderBrush="Black" BorderThickness="1"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Label Content="Запомнить"/>
+                <CheckBox x:Name="saveSet"  VerticalAlignment="Center" Margin="0,0,5,0" Checked="saveSet_Checked"/>
+            </StackPanel>
             <Button Content="Запустить" Height="50" Click="Button_Click_1"/>
         </StackPanel>
     </Grid>

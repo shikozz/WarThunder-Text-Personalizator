@@ -20,3 +20,5 @@ C:\Users\alexc\OneDrive\Рабочий стол\материалы\WTTextPersona
 C:\Users\alexc\OneDrive\Рабочий стол\материалы\WTTextPersonalizator\WTTextPersonalizator\bin\Debug\WTTextPersonalizator.application
 C:\Users\alexc\OneDrive\Рабочий стол\материалы\WTTextPersonalizator\WTTextPersonalizator\obj\Debug\WTTextPersonalizator.exe.manifest
 C:\Users\alexc\OneDrive\Рабочий стол\материалы\WTTextPersonalizator\WTTextPersonalizator\obj\Debug\WTTextPersonalizator.application
+C:\Users\alexc\OneDrive\Рабочий стол\материалы\WTTextPersonalizator\WTTextPersonalizator\obj\Debug\Instruction.g.cs
+C:\Users\alexc\OneDrive\Рабочий стол\материалы\WTTextPersonalizator\WTTextPersonalizator\obj\Debug\Instruction.baml
