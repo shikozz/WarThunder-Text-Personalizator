@@ -52,6 +52,7 @@ namespace WTTextPersonalizator
             combo1.Items.Add("Взрыв боекомплекта");
             combo1.Items.Add("Не пробил");
             combo1.Items.Add("Рикошет");
+            combo1.Items.Add("Цель не была повреждена");
             combo1.Items.Add("Экипаж выведен из строя");
             combo1.Items.Add("Критический урон");
             combo1.Items.Add("Вернуться в ангар");
@@ -120,13 +121,16 @@ namespace WTTextPersonalizator
                             }
                         }
                     }
-                    int indexNxt = menuString.IndexOf(changeFromConfig);
-                    if (indexNxt >= 0)
+                    for (int i = 0; i <= 10; i++)
                     {
-                        res = menuString.Remove(indexNxt, changeFromConfig.Length).Insert(indexNxt, goChange);
-                        File.WriteAllText(menuPath, res);
-                        MessageBox.Show("Изменено успешно!");
-                        readFiles();
+                        int indexNxt = menuString.IndexOf(changeFromConfig);
+                        if (indexNxt >= 0)
+                        {
+                            res = menuString.Remove(indexNxt, changeFromConfig.Length).Insert(indexNxt, goChange);
+                            File.WriteAllText(menuPath, res);
+                            MessageBox.Show("Изменено успешно!");
+                            readFiles();
+                        }
                     }
                 }
                 else
@@ -158,13 +162,16 @@ namespace WTTextPersonalizator
                             }
                         }
                     }
-                    int indexNxt = menuString.IndexOf(init);
-                    if (indexNxt >= 0)
+                    for (int i = 0; i <= 10; i++)
                     {
-                        res = menuString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
-                        File.WriteAllText(menuPath, res);
-                        MessageBox.Show("Изменено успешно!");
-                        readFiles();
+                        int indexNxt = menuString.IndexOf(init);
+                        if (indexNxt >= 0)
+                        {
+                            res = menuString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
+                            File.WriteAllText(menuPath, res);
+                            MessageBox.Show("Изменено успешно!");
+                            readFiles();
+                        }
                     }
                 }
                 else
@@ -214,13 +221,16 @@ namespace WTTextPersonalizator
                             }
                         }
                     }
-                    int indexNxt = menuString.IndexOf(changeFromConfig);
-                    if (indexNxt >= 0)
+                    for (int i = 0; i <= 10; i++)
                     {
-                        res = menuString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
-                        File.WriteAllText(menuPath, res);
-                        MessageBox.Show("Изменено успешно!");
-                        readFiles();
+                        int indexNxt = menuString.IndexOf(changeFromConfig);
+                        if (indexNxt >= 0)
+                        {
+                            res = menuString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
+                            File.WriteAllText(menuPath, res);
+                            MessageBox.Show("Изменено успешно!");
+                            readFiles();
+                        }
                     }
                 }
                 else
@@ -252,13 +262,16 @@ namespace WTTextPersonalizator
                             }
                         }
                     }
-                    int indexNxt = uiString.IndexOf(init);
-                    if (indexNxt >= 0)
+                    for (int i = 0; i <= 10; i++)
                     {
-                        res = uiString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
-                        File.WriteAllText(uiPath, res);
-                        MessageBox.Show("Изменено успешно!");
-                        readFiles();
+                        int indexNxt = uiString.IndexOf(init);
+                        if (indexNxt >= 0)
+                        {
+                            res = uiString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
+                            File.WriteAllText(uiPath, res);
+                            MessageBox.Show("Изменено успешно!");
+                            readFiles();
+                        }
                     }
                 }
                 else
