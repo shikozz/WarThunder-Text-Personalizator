@@ -28,7 +28,7 @@ namespace WTTextPersonalizator
         string mainPath = "";
         string configPath = "";
         string configString = "";
-        bool saveCfg = false;
+        bool saveCfg = true;
         public WorkingFrame(string path)
         {
             InitializeComponent();

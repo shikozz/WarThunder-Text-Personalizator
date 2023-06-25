@@ -47,8 +47,8 @@
             <Label Content="Если текст не поменялся - повторите изменение. В игре присутствуют несколько надписей с одинаковыми значениями"/>
         </StackPanel>
         <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Orientation="Horizontal">
-            <Button x:Name="saveConfig" Click="saveConfig_Click" Content="Сохранять конфиг" Height="30" VerticalAlignment="Bottom" Width="150"/>
-            <Label x:Name="configStatus" Content="Не сохраняется" Foreground="Red"/>
+            <Button IsEnabled="False" x:Name="saveConfig" Click="saveConfig_Click" Content="Сохранять конфиг" Height="30" VerticalAlignment="Bottom" Width="150"/>
+            <Label x:Name="configStatus" Content="Cохраняется" Foreground="Green"/>
         </StackPanel>
     </Grid>
 </Window>
