@@ -48,7 +48,7 @@ namespace WTTextPersonalizator
             combo1.Items.Add("Самолёт сбит");
             combo1.Items.Add("Помощь в уничтожении противника");
             combo1.Items.Add("Попадание");
-            combo1.Items.Add("Точка захвачена");
+            combo1.Items.Add("Зона захвачена");
             combo1.Items.Add("Взрыв боекомплекта");
             combo1.Items.Add("Не пробил");
             combo1.Items.Add("Рикошет");
@@ -58,7 +58,7 @@ namespace WTTextPersonalizator
             combo2.Items.Add("Миссия выполнена");
             combo2.Items.Add("Миссия провалена");
             combo2.Items.Add("удерживайте, чтобы начать ремонт танка");
-            combo2.Items.Add("начать тушить пожар");
+            combo2.Items.Add("Начать тушить пожар");
 
             /*Properties.Settings.Default.ShowInstruction= true;
             Properties.Settings.Default.Save();*/
