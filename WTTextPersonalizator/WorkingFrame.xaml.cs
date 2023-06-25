@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -100,7 +101,7 @@ namespace WTTextPersonalizator
                 int index = menuString.IndexOf(changeFromConfig);
                 if (index >= 0)
                 {
-                    res = menuString.Remove(index, init.Length).Insert(index, goChange);
+                    res = menuString.Remove(index, changeFromConfig.Length).Insert(index, goChange);
                     File.WriteAllText(menuPath, res);
                     MessageBox.Show("Изменено успешно!");
                     readFiles();
@@ -122,7 +123,7 @@ namespace WTTextPersonalizator
                     int indexNxt = menuString.IndexOf(changeFromConfig);
                     if (indexNxt >= 0)
                     {
-                        res = menuString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
+                        res = menuString.Remove(indexNxt, changeFromConfig.Length).Insert(indexNxt, goChange);
                         File.WriteAllText(menuPath, res);
                         MessageBox.Show("Изменено успешно!");
                         readFiles();
@@ -170,7 +171,8 @@ namespace WTTextPersonalizator
                 {
                     MessageBox.Show("Не найдено!");
                 }
-            }          
+            }
+            readFiles();
         }
 
         private void change2_Click(object sender, RoutedEventArgs e)
@@ -264,6 +266,7 @@ namespace WTTextPersonalizator
                     MessageBox.Show("Не найдено!");
                 }
             }
+            readFiles();
         }
 
         private void clear1_Click(object sender, RoutedEventArgs e)
@@ -311,6 +314,56 @@ namespace WTTextPersonalizator
         {
             Instruction newWindow = new Instruction();
             newWindow.Show();
+        }
+
+        private void loadConfig_Click(object sender, RoutedEventArgs e)
+        {
+            string pathNew = "";
+            using (System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = mainPath;
+                openFileDialog.Filter = "Config files (*.config)|*.config";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if(openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    pathNew = openFileDialog.FileName;
+
+                    var fileStrem = openFileDialog.OpenFile();
+                    using (StreamReader reader = new StreamReader(pathNew))
+                    {
+                        configText.Text = reader.ReadToEnd();
+                    }
+                }
+            }
+        }
+
+        private void patchReload_Click(object sender, RoutedEventArgs e)
+        {
+            if(MessageBox.Show("Сохраните файл в другую папку, отличную от корневой директивы игры","Внимание",MessageBoxButton.OKCancel,MessageBoxImage.Warning)==MessageBoxResult.OK)
+            {
+                System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+                saveFileDialog.Filter = "config files (*.config)|*.config";
+                saveFileDialog.FilterIndex = 2;
+                saveFileDialog.RestoreDirectory = true;
+                saveFileDialog.FileName = "WTTR.config";
+                if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    if (saveFileDialog.FileName.Contains("War Thunder"))
+                    {
+                        MessageBox.Show("Нельзя сохранить конфигурацию в эту папку");
+                    }
+                    else
+                    {
+                        string fileName = saveFileDialog.FileName;
+                        System.IO.File.WriteAllText(fileName, configString);
+                        string fileConfigDelete = configPath;
+                        File.WriteAllText(configPath,"");
+                        Directory.Delete(mainPath + "/lang", true);
+                    }
+                }
+            }
         }
     }
 }

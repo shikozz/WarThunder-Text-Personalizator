@@ -13,6 +13,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" x:Name="pathLabel"/>
+        <Button Content="Вышел патч" Width="150" VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="patchReload" Click="patchReload_Click"/>
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <Label Content="Изменения в файле menu.csv (В бой, Техника уничтожена, Попадание и т.д.)"/>
             <StackPanel Orientation="Horizontal">
@@ -45,11 +46,13 @@
                 <Button x:Name="clear2" Width="100" Content="Очистить" Click="clear2_Click" Margin="5,0,0,0"/>
             </StackPanel>
             <Label Content="Если текст не поменялся - повторите изменение. В игре присутствуют несколько надписей с одинаковыми значениями"/>
+            <TextBlock TextWrapping="Wrap" x:Name="configText"/>
         </StackPanel>
         <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Orientation="Horizontal">
             <Button x:Name="saveConfig" Click="saveConfig_Click" Content="Сохранять конфиг" Height="30" VerticalAlignment="Bottom" Width="150"/>
             <Label x:Name="configStatus" Content="Cохраняется" Foreground="Green"/>
-            <Button x:Name="instruction" Content="Инструкция" Margin="480,0,0,0" Click="instruction_Click"/>
+            <Button x:Name="loadConfig" Content="Загрузить конфиг" Click="loadConfig_Click" Height="30" Width="150"/>
+            <Button x:Name="instruction" Content="Инструкция" Margin="330,0,0,0" Click="instruction_Click"/>
         </StackPanel>
     </Grid>
 </Window>
