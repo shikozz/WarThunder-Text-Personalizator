@@ -16,6 +16,10 @@
         <StackPanel Grid.Row="1" Orientation="Vertical">
             <Label Content="Изменения в файле menu.csv (В бой, Техника уничтожена, Попадание и т.д.)"/>
             <StackPanel Orientation="Horizontal">
+                <Label Content="Частые варианты" Width="125"/>
+                <ComboBox x:Name="combo1" Width="150" SelectionChanged="combo1_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
                 <Label Content="Начальное значение"/>
                 <TextBox Width="150" x:Name="init1" BorderBrush="Black" BorderThickness="1"/>
                 <Label Content="Конечное значение"/>
@@ -25,8 +29,13 @@
             </StackPanel>
             <Label Content="Если текст не поменялся - повторите изменение. В игре присутствуют несколько надписей с одинаковыми значениями"/>
         </StackPanel>
+        <Rectangle Grid.Row="2" Fill="Black" Height="1" VerticalAlignment="Top"/>
         <StackPanel Grid.Row="2">
-            <Label Content="Изменения в файле ui.csv (Миссия выполнена, Миссия провалена)"/>
+            <Label Content="Изменения в файле ui.csv (Миссия выполнена, Миссия провалена, Начать тушить пожар)"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Частые варианты" Width="125"/>
+                <ComboBox x:Name="combo2" Width="150" SelectionChanged="combo2_SelectionChanged"/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Начальное значение"/>
                 <TextBox Width="150" x:Name="init2" BorderBrush="Black" BorderThickness="1"/>
@@ -36,6 +45,10 @@
                 <Button x:Name="clear2" Width="100" Content="Очистить" Click="clear2_Click" Margin="5,0,0,0"/>
             </StackPanel>
             <Label Content="Если текст не поменялся - повторите изменение. В игре присутствуют несколько надписей с одинаковыми значениями"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Orientation="Horizontal">
+            <Button x:Name="saveConfig" Click="saveConfig_Click" Content="Сохранять конфиг" Height="30" VerticalAlignment="Bottom" Width="150"/>
+            <Label x:Name="configStatus" Content="Не сохраняется" Foreground="Red"/>
         </StackPanel>
     </Grid>
 </Window>

@@ -61,7 +61,6 @@ namespace WTTextPersonalizator
             {
                 MessageBox.Show("Укажиет корректный путь игры");
             }
-            
         }
     }
 }
