@@ -34,6 +34,7 @@ namespace WTTextPersonalizator
         {
             InitializeComponent();
             mainPath= path;
+            instalConfig.Visibility = Visibility.Hidden;
             pathLabel.Content = path;
             menuPath = path + "/lang/menu.csv";
             uiPath = path + "/lang/ui.csv";
@@ -55,6 +56,7 @@ namespace WTTextPersonalizator
             combo1.Items.Add("Цель не была повреждена");
             combo1.Items.Add("Экипаж выведен из строя");
             combo1.Items.Add("Критический урон");
+            combo1.Items.Add("Критические повреждения");
             combo1.Items.Add("Вернуться в ангар");
             combo2.Items.Add("Миссия выполнена");
             combo2.Items.Add("Миссия провалена");
@@ -347,6 +349,7 @@ namespace WTTextPersonalizator
                     using (StreamReader reader = new StreamReader(pathNew))
                     {
                         configText.Text = reader.ReadToEnd();
+                        instalConfig.Visibility = Visibility.Visible;
                     }
                 }
             }
@@ -377,6 +380,11 @@ namespace WTTextPersonalizator
                     }
                 }
             }
+        }
+
+        private void instalConfig_Click(object sender, RoutedEventArgs e)
+        {
+            var InstalSavedConfig = new InstalSavedConfig(configText.Text,menuPath,uiPath, uiString, menuString, configString, configPath);
         }
     }
 }
