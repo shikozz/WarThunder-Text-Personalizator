@@ -349,7 +349,10 @@ namespace WTTextPersonalizator
                     using (StreamReader reader = new StreamReader(pathNew))
                     {
                         configText.Text = reader.ReadToEnd();
-                        instalConfig.Visibility = Visibility.Visible;
+                        if (configString == "")
+                        {
+                            instalConfig.Visibility = Visibility.Visible;
+                        }
                     }
                 }
             }
