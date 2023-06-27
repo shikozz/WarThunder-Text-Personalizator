@@ -76,10 +76,10 @@ namespace WTTextPersonalizator
             string initial = init;
             string change = gochange;
             string res = "";
-            string checkConfig = "";
-            for(int i =0; i<=10; i++)
+            int indexFind = 0;
+            while(indexFind>=0)
             {
-                int indexFind = menuString.IndexOf(initial);
+                indexFind = menuString.IndexOf(initial);
                 if (indexFind >= 0)
                 {
                     res = menuString.Remove(indexFind, initial.Length).Insert(indexFind, change);

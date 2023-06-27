@@ -123,9 +123,10 @@ namespace WTTextPersonalizator
                             }
                         }
                     }
-                    for (int i = 0; i <= 10; i++)
+                    int indexNxt = 0;
+                    while (indexNxt >= 0)
                     {
-                        int indexNxt = menuString.IndexOf(changeFromConfig);
+                        indexNxt = menuString.IndexOf(changeFromConfig);
                         if (indexNxt >= 0)
                         {
                             res = menuString.Remove(indexNxt, changeFromConfig.Length).Insert(indexNxt, goChange);
@@ -164,9 +165,10 @@ namespace WTTextPersonalizator
                             }
                         }
                     }
-                    for (int i = 0; i <= 10; i++)
+                    int indexNxt = 0;
+                    while (indexNxt >= 0)
                     {
-                        int indexNxt = menuString.IndexOf(init);
+                        indexNxt = menuString.IndexOf(init);
                         if (indexNxt >= 0)
                         {
                             res = menuString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
@@ -223,9 +225,10 @@ namespace WTTextPersonalizator
                             }
                         }
                     }
-                    for (int i = 0; i <= 10; i++)
+                    int indexNxt = 0;
+                    while (indexNxt>=0)
                     {
-                        int indexNxt = menuString.IndexOf(changeFromConfig);
+                        indexNxt = menuString.IndexOf(changeFromConfig);
                         if (indexNxt >= 0)
                         {
                             res = menuString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
@@ -264,9 +267,10 @@ namespace WTTextPersonalizator
                             }
                         }
                     }
-                    for (int i = 0; i <= 10; i++)
+                    int indexNxt = 0;
+                    while (indexNxt>=0)
                     {
-                        int indexNxt = uiString.IndexOf(init);
+                        indexNxt = uiString.IndexOf(init);
                         if (indexNxt >= 0)
                         {
                             res = uiString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
@@ -349,7 +353,7 @@ namespace WTTextPersonalizator
                     using (StreamReader reader = new StreamReader(pathNew))
                     {
                         configText.Text = reader.ReadToEnd();
-                        if (configString == "")
+                        if (configText.Text == "")
                         {
                             instalConfig.Visibility = Visibility.Visible;
                         }
