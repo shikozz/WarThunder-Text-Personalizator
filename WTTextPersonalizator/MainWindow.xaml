@@ -5,16 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WTTextPersonalizator"
         mc:Ignorable="d"
-        Title="WTTP" Height="220" MaxHeight="220" MinHeight="220" Width="300" MaxWidth="300" MinWidth="300">
+        Title="WTTP" Height="240" MaxHeight="240" MinHeight="240" Width="300" MaxWidth="300" MinWidth="300">
     <Grid>
         <StackPanel Orientation="Vertical">
-            <Button Content="Выбрать папку с игрой" Width="150" Height="50" Click="Button_Click"/>
+            <Button x:Name="chooseFolderBtn" Content="Выбрать папку с игрой" Width="150" Height="50" Click="Button_Click"/>
+            <ComboBox x:Name="languageCombo" Text="Язык" Height="30" SelectionChanged="languageCombo_SelectionChanged">
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="RU.png" Width="30"/>
+                        <Label Content="Русский"/>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="ENG.jpg" Width="30"/>
+                        <Label Content="English"/>
+                    </StackPanel>
+                </ComboBoxItem>
+            </ComboBox>
             <TextBox x:Name="label" Height="50" BorderBrush="Black" BorderThickness="1"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Label Content="Запомнить"/>
+                <Label x:Name="remeber" Content="Запомнить"/>
                 <CheckBox x:Name="saveSet"  VerticalAlignment="Center" Margin="0,0,5,0" Checked="saveSet_Checked"/>
             </StackPanel>
-            <Button Content="Запустить" Height="50" Click="Button_Click_1"/>
+            <Button x:Name="launchBtn" Content="Запустить" Height="50" Click="Button_Click_1"/>
         </StackPanel>
     </Grid>
 </Window>

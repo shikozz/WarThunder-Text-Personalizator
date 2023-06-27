@@ -12,20 +12,20 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Content="Инструкция" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"/>
+        <Label x:Name="instructionMain" Grid.Row="0" Content="Инструкция" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"/>
         <StackPanel Grid.Row="1" Margin="0,0,0,25">
-                <TextBlock TextWrapping="Wrap" Text="1. Укажите путь к игре. Либо нажав на кнопку, либо указав путь вручную (пример на изображении)"/>
-                <Image Source="instr1.png" Height="200"/>
-                <Label Content="При нажатии Запомнить, путь к игре будет сохранен"/>
-                <TextBlock TextWrapping="Wrap" Text="2. В главном окне вам предстоит указать надпись которую вы хотите заменить и надпись на которую будет произведена замена"/>
-                <Image Source="instr2.png"/>
-                <Label Content="Вы можете выбрать частые варианты из соответствующего меню"/>
-                <TextBlock TextWrapping="Wrap" Text="3. Если активировано сохранение конфига, то если вы захотите изменить свои подписи, то вам не придется указывать их, просто укажите изначальное значение и то на которое вы хотите его заменить"/>
-                <TextBlock TextWrapping="Wrap" Text="4. Нажав на кнопку Загрузить конфиг, включится отображение выбранного конфига. Используя эту функцию вы можете повторить свои изменения после патча"/>
-                <Image Source="instr3.png"/>
-                <TextBlock TextWrapping="Wrap" Text="5. После выхода патча необходимо: Нажать на кнопку Вышел патч, сохранить текущий конфиг в любое место, кроме основной директории игры; запустить игру и дождаться прогрузки, выйти из игры; выполнить П.4; произвести изменения по-новой"/>
-                <TextBlock TextWrapping="Wrap" Text="6. После выхода патча можно загрузить предыдущую конфигурацию. Выполните П.4 и выберете конфиг, созданный в П.5, после чего нажмите Установить. После этого старый конфиг будет установлен"/>
-                <TextBlock TextWrapping="Wrap" Text="6.1. Чтобы установить конфиг в любое другое время, выполните последовательно П.5 и П.6"/>
+                <TextBlock x:Name="first" TextWrapping="Wrap" Text="1. Укажите путь к игре. Либо нажав на кнопку, либо указав путь вручную (пример на изображении)"/>
+                <Image x:Name="img1" Source="instr1.png" Height="200"/>
+                <Label x:Name="firstAdd" Content="При нажатии Запомнить, путь к игре будет сохранен"/>
+                <TextBlock x:Name="second" TextWrapping="Wrap" Text="2. В главном окне вам предстоит указать надпись которую вы хотите заменить и надпись на которую будет произведена замена"/>
+                <Image x:Name="img2" Source="instr2.png"/>
+                <Label x:Name="secondAdd" Content="Вы можете выбрать частые варианты из соответствующего меню"/>
+                <TextBlock x:Name="third" TextWrapping="Wrap" Text="3. Если активировано сохранение конфига, то если вы захотите изменить свои подписи, то вам не придется указывать их, просто укажите изначальное значение и то на которое вы хотите его заменить"/>
+                <TextBlock x:Name="fourth" TextWrapping="Wrap" Text="4. Нажав на кнопку Загрузить конфиг, включится отображение выбранного конфига. Используя эту функцию вы можете повторить свои изменения после патча"/>
+                <Image x:Name="img3" Source="instr3.png"/>
+                <TextBlock x:Name="fifth" TextWrapping="Wrap" Text="5. После выхода патча необходимо: Нажать на кнопку Вышел патч, сохранить текущий конфиг в любое место, кроме основной директории игры; запустить игру и дождаться прогрузки, выйти из игры; выполнить П.4; произвести изменения по-новой"/>
+                <TextBlock x:Name="sixth" TextWrapping="Wrap" Text="6. После выхода патча можно загрузить предыдущую конфигурацию. Выполните П.4 и выберете конфиг, созданный в П.5, после чего нажмите Установить. После этого старый конфиг будет установлен"/>
+                <TextBlock x:Name="sixthdotone" TextWrapping="Wrap" Text="6.1. Чтобы установить конфиг в любое другое время, выполните последовательно П.5 и П.6"/>
             </StackPanel>
         <Button Grid.Row="1" VerticalAlignment="Bottom" Content="Закрыть" x:Name="closeInstr" Click="closeInstr_Click"/>
     </Grid>

@@ -17,7 +17,11 @@ namespace WTTextPersonalizator
         public string menuString = "";
         public string uiString = "";
         public string configOldString;
-        public InstalSavedConfig(string configStr, string menuP, string uiP, string uiStr, string menuStr, string configOldStr, string configP)
+
+        public string errorLoading;
+        public string successLoading;
+        public WorkingFrame workingFrame;
+        public InstalSavedConfig(string configStr, string menuP, string uiP, string uiStr, string menuStr, string configOldStr, string configP, WorkingFrame wf)
         {
             configString = configStr;
             menuPath = menuP;
@@ -26,7 +30,17 @@ namespace WTTextPersonalizator
             uiString = uiStr;
             configOldString = configOldStr;
             configPath = configP;
+            workingFrame= wf;
+            setLanguage();
             startImporting();
+
+        }
+
+        public void setLanguage()
+        {
+            languageResource lr = new languageResource(Properties.Settings.Default.Language);
+            errorLoading = lr.errorLoading;
+            successLoading = lr.successLoading;
         }
         public void startImporting()
         {
@@ -46,13 +60,15 @@ namespace WTTextPersonalizator
                         goFind(init,change);
                     }
                 }
+                workingFrame.stopProgress();
+                MessageBox.Show(successLoading);
             }
             else
             {
-                MessageBox.Show("Текущий конфиг содержит значения, прежде чем загружать старый конфиг, пожалуйста сбросьте текущий через Вышел патч");
+                workingFrame.stopProgress();
+                MessageBox.Show(errorLoading);
                 Console.WriteLine(configOldString);
             }
-            MessageBox.Show("Конфиг успешно загружен");
         }
 
         public void reloadFiles()

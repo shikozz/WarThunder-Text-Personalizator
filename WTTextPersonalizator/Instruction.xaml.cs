@@ -22,6 +22,41 @@ namespace WTTextPersonalizator
         public Instruction()
         {
             InitializeComponent();
+            setLanguage();
+        }
+
+        private void setLanguage()
+        {
+            languageResource lr = new languageResource(Properties.Settings.Default.Language);
+            instructionMain.Content = lr.instructionMain;
+            first.Text = lr.first;
+            firstAdd.Content = lr.firstadd;
+            second.Text = lr.second;
+            secondAdd.Content = lr.secondAdd;
+            third.Text = lr.third;
+            fourth.Text = lr.fourth;
+            fifth.Text = lr.fifth;
+            sixth.Text = lr.sixth;
+            sixthdotone.Text = lr.sixthdotone;
+            closeInstr.Content = lr.closeInstr;
+            if(Properties.Settings.Default.Language=="ru")
+            {
+                img1.Source = new BitmapImage(
+                    new Uri("pack://application:,,,/WTTextPersonalizator;component/instr1.png"));
+                img2.Source = new BitmapImage(
+                    new Uri("pack://application:,,,/WTTextPersonalizator;component/instr2.png"));
+                img3.Source = new BitmapImage(
+                    new Uri("pack://application:,,,/WTTextPersonalizator;component/instr3.png"));
+            }
+            else
+            {
+                img1.Source = new BitmapImage(
+                    new Uri("pack://application:,,,/WTTextPersonalizator;component/instr1_eng.png"));
+                img2.Source = new BitmapImage(
+                    new Uri("pack://application:,,,/WTTextPersonalizator;component/instr2_eng.png"));
+                img3.Source = new BitmapImage(
+                    new Uri("pack://application:,,,/WTTextPersonalizator;component/instr3_eng.png"));
+            }
         }
 
         private void closeInstr_Click(object sender, RoutedEventArgs e)

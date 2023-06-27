@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WTTextPersonalizator.exe" size="501168">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WTTextPersonalizator.exe" size="598960">
       <assemblyIdentity name="WTTextPersonalizator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ChCw74Gbqc9Oz0+gt51dGfs0TW8i8Tx20NaVNWH96fk=</dsig:DigestValue>
+        <dsig:DigestValue>w+YbLBvOcoJx6rfxPIqvF3bXj7KPEABFvpHzGmm+TX4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -63,13 +63,13 @@
       <dsig:DigestValue>doFOSC876VS2dpLsqot7XW1Pty31zqv5XZmwE0tZQlY=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="WTTextPersonalizator.exe.config" size="1074">
+  <file name="WTTextPersonalizator.exe.config" size="1185">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>m/bvwExL1sO+et/x2mZ0hgv+gMu0pKkqUOkNJQ9nu3E=</dsig:DigestValue>
+      <dsig:DigestValue>EGzA068Oci3orrgwvU3UDmyXUWShzpFFGc5srItNRpw=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,9 +31,39 @@ namespace WTTextPersonalizator
         string configPath = "";
         string configString = "";
         bool saveCfg = true;
+
+        public string toBattle = "";
+        public string enemyDestroyed = "";
+        public string planeDestroyed = "";
+        public string asist = "";
+        public string hit = "";
+        public string captureZone = "";
+        public string kaboom = "";
+        public string noPen = "";
+        public string ricoshet = "";
+        public string noDamage = "";
+        public string crewDestroyed = "";
+        public string critDamage = "";
+        public string critDmg = "";
+        public string returnToHangar = "";
+        public string missionWin = "";
+        public string missionLost = "";
+        public string repair = "";
+        public string fire = "";
+
+        public string saveConfigStr = "";
+        public string notSaveConfigStr = "";
+
+        public string changesSucces;
+        public string notFound;
+        public string stopSavingConfig;
+        public string saveToAnotherDir;
+        public string cannotSaveInGameDir;
+
         public WorkingFrame(string path)
         {
             InitializeComponent();
+            SetLanguage();
             mainPath= path;
             instalConfig.Visibility = Visibility.Hidden;
             pathLabel.Content = path;
@@ -44,29 +75,77 @@ namespace WTTextPersonalizator
 
             }
             readFiles();
-            combo1.Items.Add("В бой!");
-            combo1.Items.Add("Техника уничтожена");
-            combo1.Items.Add("Самолёт сбит");
-            combo1.Items.Add("Помощь в уничтожении противника");
-            combo1.Items.Add("Попадание");
-            combo1.Items.Add("Зона захвачена");
-            combo1.Items.Add("Взрыв боекомплекта");
-            combo1.Items.Add("Не пробил");
-            combo1.Items.Add("Рикошет");
-            combo1.Items.Add("Цель не была повреждена");
-            combo1.Items.Add("Экипаж выведен из строя");
-            combo1.Items.Add("Критический урон");
-            combo1.Items.Add("Критические повреждения");
-            combo1.Items.Add("Вернуться в ангар");
-            combo2.Items.Add("Миссия выполнена");
-            combo2.Items.Add("Миссия провалена");
-            combo2.Items.Add("удерживайте, чтобы начать ремонт танка");
-            combo2.Items.Add("Начать тушить пожар");
+            combo1.Items.Add(toBattle) ;
+            combo1.Items.Add(enemyDestroyed);
+            combo1.Items.Add(planeDestroyed);
+            combo1.Items.Add(asist);
+            combo1.Items.Add(hit);
+            combo1.Items.Add(captureZone);
+            combo1.Items.Add(kaboom);
+            combo1.Items.Add(noPen);
+            combo1.Items.Add(ricoshet);
+            combo1.Items.Add(noDamage);
+            combo1.Items.Add(crewDestroyed);
+            combo1.Items.Add(critDamage);
+            combo1.Items.Add(critDmg);
+            combo1.Items.Add(returnToHangar);
+            combo2.Items.Add(missionWin);
+            combo2.Items.Add(missionLost);
+            combo2.Items.Add(repair);
+            combo2.Items.Add(fire);
 
             /*Properties.Settings.Default.ShowInstruction= true;
             Properties.Settings.Default.Save();*/
         }
 
+        public void SetLanguage()
+        {
+            languageResource lr = new languageResource(Properties.Settings.Default.Language);
+            toBattle = lr.toBattle;
+            enemyDestroyed= lr.enemyDestroyed;
+            planeDestroyed= lr.planeDestroyed;
+            asist = lr.asist;
+            hit = lr.hit;
+            captureZone= lr.captureZone;
+            kaboom= lr.kaboom;
+            noPen = lr.noPen;
+            ricoshet= lr.ricoshet;
+            noDamage= lr.noDamage;
+            crewDestroyed= lr.crewDestroyed;
+            critDamage= lr.critDamage;
+            critDmg= lr.critDmg;
+            returnToHangar= lr.returnToHangar;
+            missionWin= lr.missionWin;
+            missionLost= lr.missionLost;
+            repair = lr.repair;
+            fire = lr.fire;
+            changeMenu.Content = lr.changeMenu;
+            frequentOptions.Content= lr.frequentOptions;
+            frequentOptions1.Content = lr.frequentOptions;
+            initValue.Content = lr.initValue;
+            initValue1.Content = lr.initValue;
+            endValue.Content = lr.endValue;
+            endValue1.Content = lr.endValue;
+            changeUi.Content = lr.changeUi;
+            saveConfigStr = lr.saveConfig;
+            notSaveConfigStr= lr.notSaveConfig;
+            patchReload.Content = lr.patchBtn;
+            change1.Content = lr.changeBtn;
+            change2.Content = lr.changeBtn;
+            clear1.Content= lr.clearBtn;
+            clear2.Content = lr.clearBtn;
+            saveConfig.Content= lr.savingConfigBtn;
+            loadConfig.Content= lr.loadConfigBtn;
+            instalConfig.Content= lr.instalConfigBtn;
+            instruction.Content= lr.instructionBtn;
+
+            changesSucces = lr.changesSucces;
+            notFound = lr.notFound;
+            stopSavingConfig = lr.stopSavingConfig;
+            saveToAnotherDir= lr.saveToAnotherDir;
+            cannotSaveInGameDir= lr.cannotSaveInGameDir;
+            configStatus.Content = lr.saveConfig;
+        }
         public void readFiles()
         {
             using (StreamReader reader = new StreamReader(menuPath))
@@ -89,101 +168,105 @@ namespace WTTextPersonalizator
             string goChange ="\""+text1.Text+"\"";
             string res = "";
             string init = "\""+init1.Text+"\"";
-
-            string resConfig = "";
-            string changeFromConfig = "";
-            int indexFind = configString.IndexOf(init);
-            if (indexFind >= 0)
-            {
-                indexFind += init.Length + 1;
-                int indexSymbol = configString.IndexOf('|', indexFind);
-                changeFromConfig = configString.Substring(indexFind, indexSymbol-indexFind);
-                resConfig = configString.Remove(indexFind, indexSymbol - indexFind).Insert(indexFind, goChange);
-                File.WriteAllText(configPath, resConfig);
-                //replace
-                int index = menuString.IndexOf(changeFromConfig);
-                if (index >= 0)
-                {
-                    res = menuString.Remove(index, changeFromConfig.Length).Insert(index, goChange);
-                    File.WriteAllText(menuPath, res);
-                    MessageBox.Show("Изменено успешно!");
-                    readFiles();
-                    if (saveCfg)
-                    {
-                        int indexFind1 = configString.IndexOf(init);
-                        if (indexFind1 >= 0)
-                        {
-
-                        }
-                        else
-                        {
-                            using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
-                            {
-                                sw.Write(init + ":" + goChange + "|");
-                            }
-                        }
-                    }
-                    int indexNxt = 0;
-                    while (indexNxt >= 0)
-                    {
-                        indexNxt = menuString.IndexOf(changeFromConfig);
-                        if (indexNxt >= 0)
-                        {
-                            res = menuString.Remove(indexNxt, changeFromConfig.Length).Insert(indexNxt, goChange);
-                            File.WriteAllText(menuPath, res);
-                            MessageBox.Show("Изменено успешно!");
-                            readFiles();
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Не найдено!");
-                }
-            }
+            if (text1.Text == "" || init1.Text == "")
+            { }
             else
             {
-                int index = menuString.IndexOf(init);
-                if (index >= 0)
+                string resConfig = "";
+                string changeFromConfig = "";
+                int indexFind = configString.IndexOf(init);
+                if (indexFind >= 0)
                 {
-                    res = menuString.Remove(index, init.Length).Insert(index, goChange);
-                    File.WriteAllText(menuPath, res);
-                    MessageBox.Show("Изменено успешно!");
-                    readFiles();
-                    if (saveCfg)
+                    indexFind += init.Length + 1;
+                    int indexSymbol = configString.IndexOf('|', indexFind);
+                    changeFromConfig = configString.Substring(indexFind, indexSymbol - indexFind);
+                    resConfig = configString.Remove(indexFind, indexSymbol - indexFind).Insert(indexFind, goChange);
+                    File.WriteAllText(configPath, resConfig);
+                    //replace
+                    int index = menuString.IndexOf(changeFromConfig);
+                    if (index >= 0)
                     {
-                        int indexFind1 = configString.IndexOf(init);
-                        if (indexFind1 >= 0)
+                        res = menuString.Remove(index, changeFromConfig.Length).Insert(index, goChange);
+                        File.WriteAllText(menuPath, res);
+                        MessageBox.Show(changesSucces);
+                        readFiles();
+                        if (saveCfg)
                         {
-
-                        }
-                        else
-                        {
-                            using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
+                            int indexFind1 = configString.IndexOf(init);
+                            if (indexFind1 >= 0)
                             {
-                                sw.Write(init + ":" + goChange + "|");
+
+                            }
+                            else
+                            {
+                                using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
+                                {
+                                    sw.Write(init + ":" + goChange + "|");
+                                }
+                            }
+                        }
+                        int indexNxt = 0;
+                        while (indexNxt >= 0)
+                        {
+                            indexNxt = menuString.IndexOf(changeFromConfig);
+                            if (indexNxt >= 0)
+                            {
+                                res = menuString.Remove(indexNxt, changeFromConfig.Length).Insert(indexNxt, goChange);
+                                File.WriteAllText(menuPath, res);
+                                MessageBox.Show(changesSucces);
+                                readFiles();
                             }
                         }
                     }
-                    int indexNxt = 0;
-                    while (indexNxt >= 0)
+                    else
                     {
-                        indexNxt = menuString.IndexOf(init);
-                        if (indexNxt >= 0)
-                        {
-                            res = menuString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
-                            File.WriteAllText(menuPath, res);
-                            MessageBox.Show("Изменено успешно!");
-                            readFiles();
-                        }
+                        MessageBox.Show(notFound);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Не найдено!");
+                    int index = menuString.IndexOf(init);
+                    if (index >= 0)
+                    {
+                        res = menuString.Remove(index, init.Length).Insert(index, goChange);
+                        File.WriteAllText(menuPath, res);
+                        MessageBox.Show(changesSucces);
+                        readFiles();
+                        if (saveCfg)
+                        {
+                            int indexFind1 = configString.IndexOf(init);
+                            if (indexFind1 >= 0)
+                            {
+
+                            }
+                            else
+                            {
+                                using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
+                                {
+                                    sw.Write(init + ":" + goChange + "|");
+                                }
+                            }
+                        }
+                        int indexNxt = 0;
+                        while (indexNxt >= 0)
+                        {
+                            indexNxt = menuString.IndexOf(init);
+                            if (indexNxt >= 0)
+                            {
+                                res = menuString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
+                                File.WriteAllText(menuPath, res);
+                                MessageBox.Show(changesSucces);
+                                readFiles();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(notFound);
+                    }
                 }
+                readFiles();
             }
-            readFiles();
         }
 
         private void change2_Click(object sender, RoutedEventArgs e)
@@ -194,98 +277,103 @@ namespace WTTextPersonalizator
 
             string resConfig = "";
             string changeFromConfig = "";
-            int indexFind = configString.IndexOf(init);
-            if (indexFind >= 0)
-            {
-                indexFind += init.Length + 1;
-                int indexSymbol = configString.IndexOf('|', indexFind);
-                changeFromConfig = configString.Substring(indexFind, indexSymbol - indexFind);
-                resConfig = configString.Remove(indexFind, indexSymbol - indexFind).Insert(indexFind, goChange);
-                File.WriteAllText(configPath, resConfig);
-                //replace
-                int index = uiString.IndexOf(changeFromConfig);
-                if (index >= 0)
-                {
-                    res = uiString.Remove(index, init.Length).Insert(index, goChange);
-                    File.WriteAllText(uiPath, res);
-                    MessageBox.Show("Изменено успешно!");
-                    readFiles();
-                    if (saveCfg)
-                    {
-                        int indexFind1 = configString.IndexOf(init);
-                        if (indexFind1 >= 0)
-                        {
-
-                        }
-                        else
-                        {
-                            using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
-                            {
-                                sw.Write(init + ":" + goChange + "|");
-                            }
-                        }
-                    }
-                    int indexNxt = 0;
-                    while (indexNxt>=0)
-                    {
-                        indexNxt = menuString.IndexOf(changeFromConfig);
-                        if (indexNxt >= 0)
-                        {
-                            res = menuString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
-                            File.WriteAllText(menuPath, res);
-                            MessageBox.Show("Изменено успешно!");
-                            readFiles();
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Не найдено!");
-                }
-            }
+            if (text2.Text == "" || init2.Text == "")
+            { }
             else
             {
-                int index = uiString.IndexOf(init);
-                if (index >= 0)
+                int indexFind = configString.IndexOf(init);
+                if (indexFind >= 0)
                 {
-                    res = uiString.Remove(index, init.Length).Insert(index, goChange);
-                    File.WriteAllText(uiPath, res);
-                    MessageBox.Show("Изменено успешно!");
-                    readFiles();
-                    if (saveCfg)
+                    indexFind += init.Length + 1;
+                    int indexSymbol = configString.IndexOf('|', indexFind);
+                    changeFromConfig = configString.Substring(indexFind, indexSymbol - indexFind);
+                    resConfig = configString.Remove(indexFind, indexSymbol - indexFind).Insert(indexFind, goChange);
+                    File.WriteAllText(configPath, resConfig);
+                    //replace
+                    int index = uiString.IndexOf(changeFromConfig);
+                    if (index >= 0)
                     {
-                        int indexFind1 = configString.IndexOf(init);
-                        if (indexFind1 >= 0)
+                        res = uiString.Remove(index, init.Length).Insert(index, goChange);
+                        File.WriteAllText(uiPath, res);
+                        MessageBox.Show(changesSucces);
+                        readFiles();
+                        if (saveCfg)
                         {
-
-                        }
-                        else
-                        {
-                            using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
+                            int indexFind1 = configString.IndexOf(init);
+                            if (indexFind1 >= 0)
                             {
-                                sw.Write(init + ":" + goChange + "|");
+
+                            }
+                            else
+                            {
+                                using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
+                                {
+                                    sw.Write(init + ":" + goChange + "|");
+                                }
+                            }
+                        }
+                        int indexNxt = 0;
+                        while (indexNxt >= 0)
+                        {
+                            indexNxt = menuString.IndexOf(changeFromConfig);
+                            if (indexNxt >= 0)
+                            {
+                                res = menuString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
+                                File.WriteAllText(menuPath, res);
+                                MessageBox.Show(changesSucces);
+                                readFiles();
                             }
                         }
                     }
-                    int indexNxt = 0;
-                    while (indexNxt>=0)
+                    else
                     {
-                        indexNxt = uiString.IndexOf(init);
-                        if (indexNxt >= 0)
-                        {
-                            res = uiString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
-                            File.WriteAllText(uiPath, res);
-                            MessageBox.Show("Изменено успешно!");
-                            readFiles();
-                        }
+                        MessageBox.Show(notFound);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Не найдено!");
+                    int index = uiString.IndexOf(init);
+                    if (index >= 0)
+                    {
+                        res = uiString.Remove(index, init.Length).Insert(index, goChange);
+                        File.WriteAllText(uiPath, res);
+                        MessageBox.Show(changesSucces);
+                        readFiles();
+                        if (saveCfg)
+                        {
+                            int indexFind1 = configString.IndexOf(init);
+                            if (indexFind1 >= 0)
+                            {
+
+                            }
+                            else
+                            {
+                                using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
+                                {
+                                    sw.Write(init + ":" + goChange + "|");
+                                }
+                            }
+                        }
+                        int indexNxt = 0;
+                        while (indexNxt >= 0)
+                        {
+                            indexNxt = uiString.IndexOf(init);
+                            if (indexNxt >= 0)
+                            {
+                                res = uiString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
+                                File.WriteAllText(uiPath, res);
+                                MessageBox.Show(changesSucces);
+                                readFiles();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(notFound);
+                    }
                 }
+                readFiles();
             }
-            readFiles();
         }
 
         private void clear1_Click(object sender, RoutedEventArgs e)
@@ -312,17 +400,17 @@ namespace WTTextPersonalizator
 
         private void saveConfig_Click(object sender, RoutedEventArgs e)
         {
-            if (configStatus.Content.ToString() == "Не сохраняется")
+            if (configStatus.Content.ToString() == saveConfigStr)
             {
-                configStatus.Content = "Сохраняется";
+                configStatus.Content = notSaveConfigStr;
                 configStatus.Foreground = new SolidColorBrush(Colors.Green);
                 saveCfg = true;
             }
             else
             {
-                if(MessageBox.Show("Вы уверены, что хотите отключить сохранение конфигурации?\nВ таком случае для обновления надписей вам \nпридется указать текущее значение!","Отключить конфигурацию", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK) 
+                if(MessageBox.Show(stopSavingConfig,"Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK) 
                 {
-                    configStatus.Content = "Не сохраняется";
+                    configStatus.Content = notSaveConfigStr;
                     configStatus.Foreground = new SolidColorBrush(Colors.Red);
                     saveCfg = false;
                 }
@@ -353,9 +441,13 @@ namespace WTTextPersonalizator
                     using (StreamReader reader = new StreamReader(pathNew))
                     {
                         configText.Text = reader.ReadToEnd();
-                        if (configText.Text != "")
+                        if (configText.Text.Contains(":"))
                         {
                             instalConfig.Visibility = Visibility.Visible;
+                        }
+                        else
+                        {
+                            instalConfig.Visibility = Visibility.Hidden;
                         }
                     }
                 }
@@ -364,7 +456,7 @@ namespace WTTextPersonalizator
 
         private void patchReload_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Сохраните файл в другую папку, отличную от корневой директивы игры","Внимание",MessageBoxButton.OKCancel,MessageBoxImage.Warning)==MessageBoxResult.OK)
+            if(MessageBox.Show(saveToAnotherDir,"Warning",MessageBoxButton.OKCancel,MessageBoxImage.Warning)==MessageBoxResult.OK)
             {
                 System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
                 saveFileDialog.Filter = "config files (*.config)|*.config";
@@ -375,7 +467,7 @@ namespace WTTextPersonalizator
                 {
                     if (saveFileDialog.FileName.Contains("War Thunder"))
                     {
-                        MessageBox.Show("Нельзя сохранить конфигурацию в эту папку");
+                        MessageBox.Show(cannotSaveInGameDir);
                     }
                     else
                     {
@@ -391,7 +483,24 @@ namespace WTTextPersonalizator
 
         private void instalConfig_Click(object sender, RoutedEventArgs e)
         {
-            var InstalSavedConfig = new InstalSavedConfig(configText.Text,menuPath,uiPath, uiString, menuString, configString, configPath);
+            goInstal();
+        }
+
+        public async void goInstal()
+        {
+            myProgressBar.Visibility = Visibility.Visible;
+            await Task.Run(() =>
+            {
+                Thread.Sleep(1000);
+                Dispatcher.Invoke((Action)(() => {
+                    var InstalSavedConfig = new InstalSavedConfig(configText.Text, menuPath, uiPath, uiString, menuString, configString, configPath,this);
+                }));
+            });
+        }
+
+        public void stopProgress()
+        {
+            myProgressBar.Visibility = Visibility.Hidden;
         }
     }
 }

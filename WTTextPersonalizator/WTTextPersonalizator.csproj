@@ -91,6 +91,7 @@
     <Compile Include="Instruction.xaml.cs">
       <DependentUpon>Instruction.xaml</DependentUpon>
     </Compile>
+    <Compile Include="languageResource.cs" />
     <Compile Include="WorkingFrame.xaml.cs">
       <DependentUpon>WorkingFrame.xaml</DependentUpon>
     </Compile>
@@ -165,6 +166,17 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="instr3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="RU.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ENG.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="instr1_eng.png" />
+    <Resource Include="instr2_eng.png" />
+    <Resource Include="instr3_eng.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

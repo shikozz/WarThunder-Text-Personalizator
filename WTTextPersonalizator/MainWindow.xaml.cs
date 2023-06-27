@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
+using System.Globalization;
 using System.Runtime.InteropServices.ComTypes;
 using MessageBox = System.Windows.MessageBox;
 
@@ -25,11 +26,14 @@ namespace WTTextPersonalizator
     /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
+        private bool langB=false;
         private bool isPathLoaded = false;
         public string selectedFolder = "";
         public MainWindow()
         {
             InitializeComponent();
+            language();
+            setLanguage();
             selectedFolder = Properties.Settings.Default.GamePath;
             if (selectedFolder != "")
             {
@@ -46,6 +50,46 @@ namespace WTTextPersonalizator
             {
                 Instruction nw = new Instruction();
                 nw.ShowDialog();
+            }
+            langB= true;
+        }
+
+        public void setLanguage()
+        {
+            languageResource langRes = new languageResource(Properties.Settings.Default.Language);
+            chooseFolderBtn.Content = langRes.chooseFolderButton;
+            remeber.Content = langRes.remeberCheck;
+            launchBtn.Content = langRes.launchButton;
+        }
+
+        public void language()
+        {
+           // Console.WriteLine(CultureInfo.CurrentCulture.TwoLetterISOLanguageName);
+            if(Properties.Settings.Default.ShowInstruction)
+            {
+                if(CultureInfo.CurrentCulture.TwoLetterISOLanguageName=="ru")
+                {
+                    Properties.Settings.Default.Language = "ru";
+                    Properties.Settings.Default.Save();
+                }
+                else
+                {
+                    Properties.Settings.Default.Language = "en";
+                    Properties.Settings.Default.Save();
+                }
+            }
+            else
+            {
+                if (Properties.Settings.Default.Language=="ru")
+                {
+                    languageCombo.SelectedItem = 0;
+                    languageCombo.SelectedIndex = 0;
+                }
+                else
+                {
+                    languageCombo.SelectedItem = 1;
+                    languageCombo.SelectedIndex = 1;
+                }
             }
         }
 
@@ -75,6 +119,16 @@ namespace WTTextPersonalizator
                 {
                     Properties.Settings.Default.GamePath = label.Text;
                     Properties.Settings.Default.Save();
+                    if (languageCombo.SelectedIndex == 0)
+                    {
+                        Properties.Settings.Default.Language = "ru";
+                        Properties.Settings.Default.Save();
+                    }
+                    else
+                    {
+                        Properties.Settings.Default.Language = "en";
+                        Properties.Settings.Default.Save();
+                    }
                 }
                 else
                 {
@@ -97,6 +151,27 @@ namespace WTTextPersonalizator
             {
                 Properties.Settings.Default.GamePath = label.Text;
                 Properties.Settings.Default.Save();
+            }
+        }
+
+        private void languageCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            setLanguage();
+            if(langB)
+            {
+                if (languageCombo.SelectedIndex == 0)
+                {
+                    Properties.Settings.Default.Language = "ru";
+                    Properties.Settings.Default.Save();
+                }
+                else
+                {
+                    Properties.Settings.Default.Language = "en";
+                    Properties.Settings.Default.Save();
+                }
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                this.Close();
             }
         }
     }
