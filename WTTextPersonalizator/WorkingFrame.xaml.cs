@@ -38,8 +38,8 @@ namespace WTTextPersonalizator
             pathLabel.Content = path;
             menuPath = path + "/lang/menu.csv";
             uiPath = path + "/lang/ui.csv";
-            configPath = path + "/WTTR.config";
-            using (StreamWriter sw = File.AppendText(path + "/WTTR.config"))
+            configPath = path + "/WTTP.config";
+            using (StreamWriter sw = File.AppendText(path + "/WTTP.config"))
             {
 
             }
@@ -77,7 +77,7 @@ namespace WTTextPersonalizator
             {
                 uiString = reader.ReadToEnd();
             }
-            using (StreamReader reader = new StreamReader(mainPath+"/WTTR.config"))
+            using (StreamReader reader = new StreamReader(mainPath+"/WTTP.config"))
             {
                 configString = reader.ReadToEnd();
             }
@@ -117,7 +117,7 @@ namespace WTTextPersonalizator
                         }
                         else
                         {
-                            using (StreamWriter sw = File.AppendText(mainPath + "/WTTR.config"))
+                            using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
                             {
                                 sw.Write(init + ":" + goChange + "|");
                             }
@@ -159,7 +159,7 @@ namespace WTTextPersonalizator
                         }
                         else
                         {
-                            using (StreamWriter sw = File.AppendText(mainPath + "/WTTR.config"))
+                            using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
                             {
                                 sw.Write(init + ":" + goChange + "|");
                             }
@@ -219,7 +219,7 @@ namespace WTTextPersonalizator
                         }
                         else
                         {
-                            using (StreamWriter sw = File.AppendText(mainPath + "/WTTR.config"))
+                            using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
                             {
                                 sw.Write(init + ":" + goChange + "|");
                             }
@@ -261,7 +261,7 @@ namespace WTTextPersonalizator
                         }
                         else
                         {
-                            using (StreamWriter sw = File.AppendText(mainPath + "/WTTR.config"))
+                            using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
                             {
                                 sw.Write(init + ":" + goChange + "|");
                             }
@@ -353,7 +353,7 @@ namespace WTTextPersonalizator
                     using (StreamReader reader = new StreamReader(pathNew))
                     {
                         configText.Text = reader.ReadToEnd();
-                        if (configText.Text == "")
+                        if (configText.Text != "")
                         {
                             instalConfig.Visibility = Visibility.Visible;
                         }
@@ -370,7 +370,7 @@ namespace WTTextPersonalizator
                 saveFileDialog.Filter = "config files (*.config)|*.config";
                 saveFileDialog.FilterIndex = 2;
                 saveFileDialog.RestoreDirectory = true;
-                saveFileDialog.FileName = "WTTR.config";
+                saveFileDialog.FileName = "WTTP.config";
                 if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     if (saveFileDialog.FileName.Contains("War Thunder"))
