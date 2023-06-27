@@ -400,9 +400,9 @@ namespace WTTextPersonalizator
 
         private void saveConfig_Click(object sender, RoutedEventArgs e)
         {
-            if (configStatus.Content.ToString() == saveConfigStr)
+            if (configStatus.Content.ToString() == notSaveConfigStr)
             {
-                configStatus.Content = notSaveConfigStr;
+                configStatus.Content = saveConfigStr;
                 configStatus.Foreground = new SolidColorBrush(Colors.Green);
                 saveCfg = true;
             }
