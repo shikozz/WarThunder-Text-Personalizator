@@ -71,11 +71,15 @@ namespace WTTextPersonalizator
                 {
                     Properties.Settings.Default.Language = "ru";
                     Properties.Settings.Default.Save();
+                    languageCombo.SelectedItem = 0;
+                    languageCombo.SelectedIndex = 0;
                 }
                 else
                 {
                     Properties.Settings.Default.Language = "en";
                     Properties.Settings.Default.Save();
+                    languageCombo.SelectedItem = 1;
+                    languageCombo.SelectedIndex = 1;
                 }
             }
             else
