@@ -476,6 +476,8 @@ namespace WTTextPersonalizator
                         string fileConfigDelete = configPath;
                         File.WriteAllText(configPath,"");
                         Directory.Delete(mainPath + "/lang", true);
+                        instalConfig.Visibility= Visibility.Hidden;
+                        readFiles();
                     }
                 }
             }
@@ -501,6 +503,8 @@ namespace WTTextPersonalizator
         public void stopProgress()
         {
             myProgressBar.Visibility = Visibility.Hidden;
+            instalConfig.Visibility = Visibility.Hidden;
+            readFiles();
         }
     }
 }
