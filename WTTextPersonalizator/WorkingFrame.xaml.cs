@@ -148,19 +148,25 @@ namespace WTTextPersonalizator
         }
         public void readFiles()
         {
-            using (StreamReader reader = new StreamReader(menuPath))
+            try
             {
-                menuString = reader.ReadToEnd();
+                using (StreamReader reader = new StreamReader(menuPath))
+                {
+                    menuString = reader.ReadToEnd();
+                }
+                using (StreamReader reader = new StreamReader(uiPath))
+                {
+                    uiString = reader.ReadToEnd();
+                }
+                using (StreamReader reader = new StreamReader(mainPath + "/WTTP.config"))
+                {
+                    configString = reader.ReadToEnd();
+                }
             }
-            using (StreamReader reader = new StreamReader(uiPath))
+            catch
             {
-                uiString = reader.ReadToEnd();
+                MessageBox.Show(notFound+" menu.csv & ui.csv");
             }
-            using (StreamReader reader = new StreamReader(mainPath+"/WTTP.config"))
-            {
-                configString = reader.ReadToEnd();
-            }
-
         }
 
         private void change1_Click(object sender, RoutedEventArgs e)
@@ -425,6 +431,7 @@ namespace WTTextPersonalizator
 
         private void loadConfig_Click(object sender, RoutedEventArgs e)
         {
+            readFiles();
             string pathNew = "";
             using (System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog())
             {
@@ -441,7 +448,7 @@ namespace WTTextPersonalizator
                     using (StreamReader reader = new StreamReader(pathNew))
                     {
                         configText.Text = reader.ReadToEnd();
-                        if (configText.Text.Contains(":"))
+                        if (configText.Text.Contains(":")&&!configString.Contains(":"))
                         {
                             instalConfig.Visibility = Visibility.Visible;
                         }
@@ -477,7 +484,6 @@ namespace WTTextPersonalizator
                         File.WriteAllText(configPath,"");
                         Directory.Delete(mainPath + "/lang", true);
                         instalConfig.Visibility= Visibility.Hidden;
-                        readFiles();
                     }
                 }
             }
@@ -490,6 +496,7 @@ namespace WTTextPersonalizator
 
         public async void goInstal()
         {
+            readFiles();
             myProgressBar.Visibility = Visibility.Visible;
             await Task.Run(() =>
             {
@@ -504,7 +511,6 @@ namespace WTTextPersonalizator
         {
             myProgressBar.Visibility = Visibility.Hidden;
             instalConfig.Visibility = Visibility.Hidden;
-            readFiles();
         }
     }
 }
