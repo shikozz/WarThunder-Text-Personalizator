@@ -36,6 +36,7 @@ namespace WTTextPersonalizator
             third.Text = lr.third;
             fourth.Text = lr.fourth;
             fifth.Text = lr.fifth;
+            fifthAdd.Text= lr.fifthAdd;
             sixth.Text = lr.sixth;
             sixthdotone.Text = lr.sixthdotone;
             closeInstr.Content = lr.closeInstr;

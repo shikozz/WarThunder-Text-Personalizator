@@ -65,6 +65,7 @@ namespace WTTextPersonalizator
         public string third;
         public string fourth;
         public string fifth;
+        public string fifthAdd;
         public string sixth;
         public string sixthdotone;
         public string closeInstr;
@@ -133,6 +134,7 @@ namespace WTTextPersonalizator
                 fourth = "4. Нажав на кнопку Загрузить конфиг, включится отображение выбранного конфига. Используя эту функцию вы можете повторить свои изменения после патча";
                 fifth = "5. После выхода патча необходимо: Нажать на кнопку Вышел патч, сохранить текущий конфиг в любое место, кроме основной директории игры;" +
                     " запустить игру и дождаться прогрузки, выйти из игры; выполнить П.4; произвести изменения по-новой";
+                fifthAdd = "КРАЙНЕ РЕКОМЕНДУЕТСЯ ЗАКРЫВАТЬ ПРИЛОЖЕНИЕ ВО ВРЕМЯ ЗАГРУЗКИ И РАБОТЫ САМОЙ ИГРЫ ВО ИЗБЕЖАНИИ ПРОБЛЕМ";
                 sixth = "6. После выхода патча можно загрузить предыдущую конфигурацию. Выполните П.4 и выберете конфиг, созданный в П.5, после чего нажмите Установить. После этого старый конфиг будет установлен";
                 sixthdotone = "6.1. Чтобы установить конфиг в любое другое время, выполните последовательно П.5 и П.6";
                 closeInstr = "Закрыть";
@@ -197,8 +199,9 @@ namespace WTTextPersonalizator
                 third = "3. If saving the config is activated, then if you want to change your labels, then you do not have to specify them, just specify the original value and the one you want to replace it with";
                 fourth = "4. By clicking on the Load config button, the display of the selected config will turn on. Using this feature you can repeat your changes after the patch";
                 fifth = "5. After the patch is released, you must: Click on the Patch button, save the current config to any place except the main directory of the game; " +
-                    "start the game and wait for the download, exit the game; perform Step 4; make changes in a new way";
-                sixth = "6. After the patch is released, you can download the previous configuration. Follow Step 4 and select the config created in Step 5, then click Install. After that, the old config will be installed";
+                    "start the game and wait for the load, exit the game; perform Step 4; make changes in a new way";
+                fifthAdd = "IT IS HIGHLY RECOMMENDED TO CLOSE THE APPLICATION WHILE LOADING AND RUNNING THE GAME ITSELF IN ORDER TO AVOID PROBLEMS";
+                sixth = "6. After the patch is released, you can install the previous configuration. Follow Step 4 and select the config created in Step 5, then click Install. After that, the old config will be installed";
                 sixthdotone = "6.1. To install the config at any other time, follow Step 5 and Step 6 sequentially";
                 closeInstr = "Close";
                 //instasavedconfig
