@@ -45,6 +45,9 @@ namespace WTTextPersonalizator
         public string crewDestroyed = "";
         public string critDamage = "";
         public string critDmg = "";
+        public string scout;
+        public string scoutDmg;
+        public string scoutDestroyed;
         public string returnToHangar = "";
         public string missionWin = "";
         public string missionLost = "";
@@ -88,6 +91,9 @@ namespace WTTextPersonalizator
             combo1.Items.Add(crewDestroyed);
             combo1.Items.Add(critDamage);
             combo1.Items.Add(critDmg);
+            combo1.Items.Add(scout);
+            combo1.Items.Add(scoutDmg);
+            combo1.Items.Add(scoutDestroyed);
             combo1.Items.Add(returnToHangar);
             combo2.Items.Add(missionWin);
             combo2.Items.Add(missionLost);
@@ -114,6 +120,9 @@ namespace WTTextPersonalizator
             crewDestroyed= lr.crewDestroyed;
             critDamage= lr.critDamage;
             critDmg= lr.critDmg;
+            scout = lr.scout;
+            scoutDmg = lr.scoutDamage;
+            scoutDestroyed= lr.scoutDestroyed;
             returnToHangar= lr.returnToHangar;
             missionWin= lr.missionWin;
             missionLost= lr.missionLost;

@@ -28,6 +28,9 @@ namespace WTTextPersonalizator
         public string crewDestroyed = "";
         public string critDamage = "";
         public string critDmg = "";
+        public string scout = "";
+        public string scoutDamage = "";
+        public string scoutDestroyed = "";
         public string returnToHangar = "";
         public string missionWin = "";
         public string missionLost = "";
@@ -97,6 +100,9 @@ namespace WTTextPersonalizator
                 crewDestroyed = "Экипаж выведен из строя";
                 critDamage = "Критический урон";
                 critDmg = "Критические повреждения";
+                scout = "Цель разведана";
+                scoutDamage = "Разведанная цель получила урон";
+                scoutDestroyed = "Разведанная цель уничтожена (по разведданным)";
                 returnToHangar = "Вернуться в ангар";
                 missionWin = "Миссия выполнена";
                 missionLost = "Миссия провалена";
@@ -163,6 +169,9 @@ namespace WTTextPersonalizator
                 crewDestroyed = "Crew knocked out";
                 critDamage = "Critical Hit";
                 critDmg = "Critical hit";
+                scout = "Target scouted";
+                scoutDamage = "Scouted target damaged";
+                scoutDestroyed = "Scouted target destroyed (by intelligence)";
                 returnToHangar = "Return to the Hangar";
                 missionWin = "Mission Accomplished";
                 missionLost = "Mission Failed";
