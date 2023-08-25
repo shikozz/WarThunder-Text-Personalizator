@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -63,9 +64,13 @@ namespace WTTextPersonalizator
         public string saveToAnotherDir;
         public string cannotSaveInGameDir;
 
+        public string checkRunning;
+        public bool gameRunnig;
+
         public WorkingFrame(string path)
         {
             InitializeComponent();
+            //checkIfGameIsRunning();
             SetLanguage();
             mainPath= path;
             instalConfig.Visibility = Visibility.Hidden;
@@ -102,8 +107,21 @@ namespace WTTextPersonalizator
 
             /*Properties.Settings.Default.ShowInstruction= true;
             Properties.Settings.Default.Save();*/
+
         }
 
+        public void checkIfGameIsRunning()
+        {
+            if (Process.GetProcessesByName("aces").Length > 0)
+            {
+                MessageBox.Show(checkRunning);
+                gameRunnig = true;
+            }
+            else
+            {
+                gameRunnig= false;
+            }
+        }
         public void SetLanguage()
         {
             languageResource lr = new languageResource(Properties.Settings.Default.Language);
@@ -154,6 +172,8 @@ namespace WTTextPersonalizator
             saveToAnotherDir= lr.saveToAnotherDir;
             cannotSaveInGameDir= lr.cannotSaveInGameDir;
             configStatus.Content = lr.saveConfig;
+
+            checkRunning = lr.checkRunning;
         }
         public void readFiles()
         {
@@ -180,214 +200,222 @@ namespace WTTextPersonalizator
 
         private void change1_Click(object sender, RoutedEventArgs e)
         {
+            checkIfGameIsRunning();
+            if(!gameRunnig)
+            { 
             string goChange ="\""+text1.Text+"\"";
             string res = "";
             string init = "\""+init1.Text+"\"";
             if (text1.Text == "" || init1.Text == "")
             { }
-            else
-            {
-                string resConfig = "";
-                string changeFromConfig = "";
-                int indexFind = configString.IndexOf(init);
-                if (indexFind >= 0)
-                {
-                    indexFind += init.Length + 1;
-                    int indexSymbol = configString.IndexOf('|', indexFind);
-                    changeFromConfig = configString.Substring(indexFind, indexSymbol - indexFind);
-                    resConfig = configString.Remove(indexFind, indexSymbol - indexFind).Insert(indexFind, goChange);
-                    File.WriteAllText(configPath, resConfig);
-                    //replace
-                    int index = menuString.IndexOf(changeFromConfig);
-                    if (index >= 0)
-                    {
-                        res = menuString.Remove(index, changeFromConfig.Length).Insert(index, goChange);
-                        File.WriteAllText(menuPath, res);
-                        MessageBox.Show(changesSucces);
-                        readFiles();
-                        if (saveCfg)
-                        {
-                            int indexFind1 = configString.IndexOf(init);
-                            if (indexFind1 >= 0)
-                            {
-
-                            }
-                            else
-                            {
-                                using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
-                                {
-                                    sw.Write(init + ":" + goChange + "|");
-                                }
-                            }
-                        }
-                        int indexNxt = 0;
-                        while (indexNxt >= 0)
-                        {
-                            indexNxt = menuString.IndexOf(changeFromConfig);
-                            if (indexNxt >= 0)
-                            {
-                                res = menuString.Remove(indexNxt, changeFromConfig.Length).Insert(indexNxt, goChange);
-                                File.WriteAllText(menuPath, res);
-                                MessageBox.Show(changesSucces);
-                                readFiles();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show(notFound);
-                    }
-                }
                 else
                 {
-                    int index = menuString.IndexOf(init);
-                    if (index >= 0)
+                    string resConfig = "";
+                    string changeFromConfig = "";
+                    int indexFind = configString.IndexOf(init);
+                    if (indexFind >= 0)
                     {
-                        res = menuString.Remove(index, init.Length).Insert(index, goChange);
-                        File.WriteAllText(menuPath, res);
-                        MessageBox.Show(changesSucces);
-                        readFiles();
-                        if (saveCfg)
+                        indexFind += init.Length + 1;
+                        int indexSymbol = configString.IndexOf('|', indexFind);
+                        changeFromConfig = configString.Substring(indexFind, indexSymbol - indexFind);
+                        resConfig = configString.Remove(indexFind, indexSymbol - indexFind).Insert(indexFind, goChange);
+                        File.WriteAllText(configPath, resConfig);
+                        //replace
+                        int index = menuString.IndexOf(changeFromConfig);
+                        if (index >= 0)
                         {
-                            int indexFind1 = configString.IndexOf(init);
-                            if (indexFind1 >= 0)
+                            res = menuString.Remove(index, changeFromConfig.Length).Insert(index, goChange);
+                            File.WriteAllText(menuPath, res);
+                            MessageBox.Show(changesSucces);
+                            readFiles();
+                            if (saveCfg)
                             {
-
-                            }
-                            else
-                            {
-                                using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
+                                int indexFind1 = configString.IndexOf(init);
+                                if (indexFind1 >= 0)
                                 {
-                                    sw.Write(init + ":" + goChange + "|");
+
+                                }
+                                else
+                                {
+                                    using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
+                                    {
+                                        sw.Write(init + ":" + goChange + "|");
+                                    }
+                                }
+                            }
+                            int indexNxt = 0;
+                            while (indexNxt >= 0)
+                            {
+                                indexNxt = menuString.IndexOf(changeFromConfig);
+                                if (indexNxt >= 0)
+                                {
+                                    res = menuString.Remove(indexNxt, changeFromConfig.Length).Insert(indexNxt, goChange);
+                                    File.WriteAllText(menuPath, res);
+                                    MessageBox.Show(changesSucces);
+                                    readFiles();
                                 }
                             }
                         }
-                        int indexNxt = 0;
-                        while (indexNxt >= 0)
+                        else
                         {
-                            indexNxt = menuString.IndexOf(init);
-                            if (indexNxt >= 0)
-                            {
-                                res = menuString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
-                                File.WriteAllText(menuPath, res);
-                                MessageBox.Show(changesSucces);
-                                readFiles();
-                            }
+                            MessageBox.Show(notFound);
                         }
                     }
                     else
                     {
-                        MessageBox.Show(notFound);
+                        int index = menuString.IndexOf(init);
+                        if (index >= 0)
+                        {
+                            res = menuString.Remove(index, init.Length).Insert(index, goChange);
+                            File.WriteAllText(menuPath, res);
+                            MessageBox.Show(changesSucces);
+                            readFiles();
+                            if (saveCfg)
+                            {
+                                int indexFind1 = configString.IndexOf(init);
+                                if (indexFind1 >= 0)
+                                {
+
+                                }
+                                else
+                                {
+                                    using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
+                                    {
+                                        sw.Write(init + ":" + goChange + "|");
+                                    }
+                                }
+                            }
+                            int indexNxt = 0;
+                            while (indexNxt >= 0)
+                            {
+                                indexNxt = menuString.IndexOf(init);
+                                if (indexNxt >= 0)
+                                {
+                                    res = menuString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
+                                    File.WriteAllText(menuPath, res);
+                                    MessageBox.Show(changesSucces);
+                                    readFiles();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(notFound);
+                        }
                     }
+                    readFiles();
                 }
-                readFiles();
             }
         }
 
         private void change2_Click(object sender, RoutedEventArgs e)
         {
-            string goChange = "\"" + text2.Text + "\"";
+            checkIfGameIsRunning();
+            if (!gameRunnig)
+            {
+                string goChange = "\"" + text2.Text + "\"";
             string res = "";
             string init = "\"" + init2.Text + "\"";
 
             string resConfig = "";
             string changeFromConfig = "";
-            if (text2.Text == "" || init2.Text == "")
-            { }
-            else
-            {
-                int indexFind = configString.IndexOf(init);
-                if (indexFind >= 0)
-                {
-                    indexFind += init.Length + 1;
-                    int indexSymbol = configString.IndexOf('|', indexFind);
-                    changeFromConfig = configString.Substring(indexFind, indexSymbol - indexFind);
-                    resConfig = configString.Remove(indexFind, indexSymbol - indexFind).Insert(indexFind, goChange);
-                    File.WriteAllText(configPath, resConfig);
-                    //replace
-                    int index = uiString.IndexOf(changeFromConfig);
-                    if (index >= 0)
-                    {
-                        res = uiString.Remove(index, init.Length).Insert(index, goChange);
-                        File.WriteAllText(uiPath, res);
-                        MessageBox.Show(changesSucces);
-                        readFiles();
-                        if (saveCfg)
-                        {
-                            int indexFind1 = configString.IndexOf(init);
-                            if (indexFind1 >= 0)
-                            {
-
-                            }
-                            else
-                            {
-                                using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
-                                {
-                                    sw.Write(init + ":" + goChange + "|");
-                                }
-                            }
-                        }
-                        int indexNxt = 0;
-                        while (indexNxt >= 0)
-                        {
-                            indexNxt = menuString.IndexOf(changeFromConfig);
-                            if (indexNxt >= 0)
-                            {
-                                res = menuString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
-                                File.WriteAllText(menuPath, res);
-                                MessageBox.Show(changesSucces);
-                                readFiles();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show(notFound);
-                    }
-                }
+                if (text2.Text == "" || init2.Text == "")
+                { }
                 else
                 {
-                    int index = uiString.IndexOf(init);
-                    if (index >= 0)
+                    int indexFind = configString.IndexOf(init);
+                    if (indexFind >= 0)
                     {
-                        res = uiString.Remove(index, init.Length).Insert(index, goChange);
-                        File.WriteAllText(uiPath, res);
-                        MessageBox.Show(changesSucces);
-                        readFiles();
-                        if (saveCfg)
+                        indexFind += init.Length + 1;
+                        int indexSymbol = configString.IndexOf('|', indexFind);
+                        changeFromConfig = configString.Substring(indexFind, indexSymbol - indexFind);
+                        resConfig = configString.Remove(indexFind, indexSymbol - indexFind).Insert(indexFind, goChange);
+                        File.WriteAllText(configPath, resConfig);
+                        //replace
+                        int index = uiString.IndexOf(changeFromConfig);
+                        if (index >= 0)
                         {
-                            int indexFind1 = configString.IndexOf(init);
-                            if (indexFind1 >= 0)
+                            res = uiString.Remove(index, init.Length).Insert(index, goChange);
+                            File.WriteAllText(uiPath, res);
+                            MessageBox.Show(changesSucces);
+                            readFiles();
+                            if (saveCfg)
                             {
-
-                            }
-                            else
-                            {
-                                using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
+                                int indexFind1 = configString.IndexOf(init);
+                                if (indexFind1 >= 0)
                                 {
-                                    sw.Write(init + ":" + goChange + "|");
+
+                                }
+                                else
+                                {
+                                    using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
+                                    {
+                                        sw.Write(init + ":" + goChange + "|");
+                                    }
+                                }
+                            }
+                            int indexNxt = 0;
+                            while (indexNxt >= 0)
+                            {
+                                indexNxt = menuString.IndexOf(changeFromConfig);
+                                if (indexNxt >= 0)
+                                {
+                                    res = menuString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
+                                    File.WriteAllText(menuPath, res);
+                                    MessageBox.Show(changesSucces);
+                                    readFiles();
                                 }
                             }
                         }
-                        int indexNxt = 0;
-                        while (indexNxt >= 0)
+                        else
                         {
-                            indexNxt = uiString.IndexOf(init);
-                            if (indexNxt >= 0)
-                            {
-                                res = uiString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
-                                File.WriteAllText(uiPath, res);
-                                MessageBox.Show(changesSucces);
-                                readFiles();
-                            }
+                            MessageBox.Show(notFound);
                         }
                     }
                     else
                     {
-                        MessageBox.Show(notFound);
+                        int index = uiString.IndexOf(init);
+                        if (index >= 0)
+                        {
+                            res = uiString.Remove(index, init.Length).Insert(index, goChange);
+                            File.WriteAllText(uiPath, res);
+                            MessageBox.Show(changesSucces);
+                            readFiles();
+                            if (saveCfg)
+                            {
+                                int indexFind1 = configString.IndexOf(init);
+                                if (indexFind1 >= 0)
+                                {
+
+                                }
+                                else
+                                {
+                                    using (StreamWriter sw = File.AppendText(mainPath + "/WTTP.config"))
+                                    {
+                                        sw.Write(init + ":" + goChange + "|");
+                                    }
+                                }
+                            }
+                            int indexNxt = 0;
+                            while (indexNxt >= 0)
+                            {
+                                indexNxt = uiString.IndexOf(init);
+                                if (indexNxt >= 0)
+                                {
+                                    res = uiString.Remove(indexNxt, init.Length).Insert(indexNxt, goChange);
+                                    File.WriteAllText(uiPath, res);
+                                    MessageBox.Show(changesSucces);
+                                    readFiles();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(notFound);
+                        }
                     }
+                    readFiles();
                 }
-                readFiles();
             }
         }
 
@@ -405,29 +433,41 @@ namespace WTTextPersonalizator
 
         private void combo1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            init1.Text = combo1.SelectedItem.ToString();
+            checkIfGameIsRunning();
+            if (!gameRunnig)
+            {
+                init1.Text = combo1.SelectedItem.ToString();
+            }
         }
 
         private void combo2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            init2.Text = combo2.SelectedItem.ToString();
+            checkIfGameIsRunning();
+            if (!gameRunnig)
+            {
+                init2.Text = combo2.SelectedItem.ToString();
+            }
         }
 
         private void saveConfig_Click(object sender, RoutedEventArgs e)
         {
-            if (configStatus.Content.ToString() == notSaveConfigStr)
+            checkIfGameIsRunning();
+            if (!gameRunnig)
             {
-                configStatus.Content = saveConfigStr;
-                configStatus.Foreground = new SolidColorBrush(Colors.Green);
-                saveCfg = true;
-            }
-            else
-            {
-                if(MessageBox.Show(stopSavingConfig,"Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK) 
+                if (configStatus.Content.ToString() == notSaveConfigStr)
                 {
-                    configStatus.Content = notSaveConfigStr;
-                    configStatus.Foreground = new SolidColorBrush(Colors.Red);
-                    saveCfg = false;
+                    configStatus.Content = saveConfigStr;
+                    configStatus.Foreground = new SolidColorBrush(Colors.Green);
+                    saveCfg = true;
+                }
+                else
+                {
+                    if (MessageBox.Show(stopSavingConfig, "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
+                    {
+                        configStatus.Content = notSaveConfigStr;
+                        configStatus.Foreground = new SolidColorBrush(Colors.Red);
+                        saveCfg = false;
+                    }
                 }
             }
         }
@@ -440,30 +480,34 @@ namespace WTTextPersonalizator
 
         private void loadConfig_Click(object sender, RoutedEventArgs e)
         {
-            readFiles();
-            string pathNew = "";
-            using (System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog())
+            checkIfGameIsRunning();
+            if (!gameRunnig)
             {
-                openFileDialog.InitialDirectory = mainPath;
-                openFileDialog.Filter = "Config files (*.config)|*.config";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-
-                if(openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                readFiles();
+                string pathNew = "";
+                using (System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog())
                 {
-                    pathNew = openFileDialog.FileName;
+                    openFileDialog.InitialDirectory = mainPath;
+                    openFileDialog.Filter = "Config files (*.config)|*.config";
+                    openFileDialog.FilterIndex = 2;
+                    openFileDialog.RestoreDirectory = true;
 
-                    var fileStrem = openFileDialog.OpenFile();
-                    using (StreamReader reader = new StreamReader(pathNew))
+                    if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        configText.Text = reader.ReadToEnd();
-                        if (configText.Text.Contains(":")&&!configString.Contains(":"))
+                        pathNew = openFileDialog.FileName;
+
+                        var fileStrem = openFileDialog.OpenFile();
+                        using (StreamReader reader = new StreamReader(pathNew))
                         {
-                            instalConfig.Visibility = Visibility.Visible;
-                        }
-                        else
-                        {
-                            instalConfig.Visibility = Visibility.Hidden;
+                            configText.Text = reader.ReadToEnd();
+                            if (configText.Text.Contains(":") && !configString.Contains(":"))
+                            {
+                                instalConfig.Visibility = Visibility.Visible;
+                            }
+                            else
+                            {
+                                instalConfig.Visibility = Visibility.Hidden;
+                            }
                         }
                     }
                 }
@@ -472,27 +516,31 @@ namespace WTTextPersonalizator
 
         private void patchReload_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show(saveToAnotherDir,"Warning",MessageBoxButton.OKCancel,MessageBoxImage.Warning)==MessageBoxResult.OK)
+            checkIfGameIsRunning();
+            if (!gameRunnig)
             {
-                System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-                saveFileDialog.Filter = "config files (*.config)|*.config";
-                saveFileDialog.FilterIndex = 2;
-                saveFileDialog.RestoreDirectory = true;
-                saveFileDialog.FileName = "WTTP.config";
-                if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (MessageBox.Show(saveToAnotherDir, "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Warning) == MessageBoxResult.OK)
                 {
-                    if (saveFileDialog.FileName.Contains("War Thunder"))
+                    System.Windows.Forms.SaveFileDialog saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+                    saveFileDialog.Filter = "config files (*.config)|*.config";
+                    saveFileDialog.FilterIndex = 2;
+                    saveFileDialog.RestoreDirectory = true;
+                    saveFileDialog.FileName = "WTTP.config";
+                    if (saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        MessageBox.Show(cannotSaveInGameDir);
-                    }
-                    else
-                    {
-                        string fileName = saveFileDialog.FileName;
-                        System.IO.File.WriteAllText(fileName, configString);
-                        string fileConfigDelete = configPath;
-                        File.WriteAllText(configPath,"");
-                        Directory.Delete(mainPath + "/lang", true);
-                        instalConfig.Visibility= Visibility.Hidden;
+                        if (saveFileDialog.FileName.Contains("War Thunder"))
+                        {
+                            MessageBox.Show(cannotSaveInGameDir);
+                        }
+                        else
+                        {
+                            string fileName = saveFileDialog.FileName;
+                            System.IO.File.WriteAllText(fileName, configString);
+                            string fileConfigDelete = configPath;
+                            File.WriteAllText(configPath, "");
+                            Directory.Delete(mainPath + "/lang", true);
+                            instalConfig.Visibility = Visibility.Hidden;
+                        }
                     }
                 }
             }
@@ -500,7 +548,11 @@ namespace WTTextPersonalizator
 
         private void instalConfig_Click(object sender, RoutedEventArgs e)
         {
-            goInstal();
+            checkIfGameIsRunning();
+            if (!gameRunnig)
+            {
+                goInstal();
+            }
         }
 
         public async void goInstal()

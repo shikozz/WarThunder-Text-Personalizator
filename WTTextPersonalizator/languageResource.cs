@@ -76,6 +76,9 @@ namespace WTTextPersonalizator
         //instasavedconfig
         public string errorLoading;
         public string successLoading;
+
+        //misc
+        public string checkRunning;
         public languageResource(string lang) 
         {
             language= lang;
@@ -121,7 +124,7 @@ namespace WTTextPersonalizator
                 changeBtn = "Поменять";
                 clearBtn = "Очистить";
                 savingConfigBtn = "Сохранять конфиг";
-                loadConfigBtn = "Загрузить конфиг";
+                loadConfigBtn = "Открыть конфиг";
                 instalConfigBtn = "Установить";
                 instructionBtn = "Инструкция";
                 //messageBoxes
@@ -147,6 +150,8 @@ namespace WTTextPersonalizator
                 //instasavedconfig
                 errorLoading = "Текущий конфиг содержит значения, прежде чем загружать старый конфиг, пожалуйста сбросьте текущий через Вышел патч";
                 successLoading= "Конфиг успешно загружен";
+                //misc
+                checkRunning = "Игра запущенна в данный момент. Пожалуйста закройте приложение и перезапустите его после выхода из игры!";
             }
             else
             {
@@ -216,6 +221,8 @@ namespace WTTextPersonalizator
                 //instasavedconfig
                 errorLoading = "The current config contains the values, before downloading the old config, please reset the current one through the released patch";
                 successLoading = "Config loaded successfully";
+                //misc
+                checkRunning = "The game is currently running. Please close the app and restart it after exiting the game!";
             }
         }
     }
