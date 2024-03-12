@@ -29,6 +29,10 @@ namespace WTTextPersonalizator
         private bool langB=false;
         private bool isPathLoaded = false;
         public string selectedFolder = "";
+        public string errorFolder = "";
+        public string letsFixThat = "";
+        public string justReload = "";
+        public string nowReload = "";
         public MainWindow()
         {
             InitializeComponent();
@@ -60,6 +64,10 @@ namespace WTTextPersonalizator
             chooseFolderBtn.Content = langRes.chooseFolderButton;
             remeber.Content = langRes.remeberCheck;
             launchBtn.Content = langRes.launchButton;
+            errorFolder = langRes.errorFolder;
+            letsFixThat = langRes.letsFixThat;
+            justReload = langRes.justReload;
+            nowReload = langRes.nowReload;
         }
 
         public void language()
@@ -113,39 +121,69 @@ namespace WTTextPersonalizator
         {
             try
             {
-                string path = label.Text + "/lang/menu.csv";
-                string testStr = "";
-                using (StreamReader reader = new StreamReader(path))
+                string path = label.Text + "/config.blk";
+                //string testStr = "";
+                /*using (StreamReader reader = new StreamReader(path))
                 {
                     testStr = reader.ReadToEnd();
-                }
-                if (saveSet.IsChecked == true)
+                }*/
+                //path = label.Text + "/lang";
+                if(Directory.Exists(label.Text+"/lang"))
                 {
-                    Properties.Settings.Default.GamePath = label.Text;
-                    Properties.Settings.Default.Save();
-                    if (languageCombo.SelectedIndex == 0)
+                    if (saveSet.IsChecked == true)
                     {
-                        Properties.Settings.Default.Language = "ru";
+                        Properties.Settings.Default.GamePath = label.Text;
                         Properties.Settings.Default.Save();
+                        if (languageCombo.SelectedIndex == 0)
+                        {
+                            Properties.Settings.Default.Language = "ru";
+                            Properties.Settings.Default.Save();
+                        }
+                        else
+                        {
+                            Properties.Settings.Default.Language = "en";
+                            Properties.Settings.Default.Save();
+                        }
                     }
                     else
                     {
-                        Properties.Settings.Default.Language = "en";
+                        Properties.Settings.Default.GamePath = "";
                         Properties.Settings.Default.Save();
                     }
+                    WorkingFrame wf = new WorkingFrame(label.Text);
+                    wf.Show();
+                    this.Close();
                 }
                 else
                 {
-                    Properties.Settings.Default.GamePath = "";
-                    Properties.Settings.Default.Save();
-                }
-                WorkingFrame wf = new WorkingFrame(label.Text);
-                wf.Show();
-                this.Close();
+                    /*if(MessageBox.Show(letsFixThat, "???",MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                    {
+
+                    };*/
+                    DialogResult dlgRes = System.Windows.Forms.MessageBox.Show(letsFixThat, "???", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dlgRes == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        StreamReader config_blk = new StreamReader(path);
+                        string config = config_blk.ReadToEnd();
+                        config_blk.Close();
+                        int index = config.IndexOf("testLocalization:b=yes");
+                        if (index > 0)
+                        {
+                            MessageBox.Show(justReload);
+                        }
+                        else
+                        {
+                            int indexFindtoInsert = config.IndexOf("debug{");
+                            string res = config.Insert(indexFindtoInsert+6, Environment.NewLine+"testLocalization:b=yes");
+                            File.WriteAllText(path, res);
+                            MessageBox.Show(nowReload);
+                        }
+                    }
+                }  
             }
             catch 
             {
-                MessageBox.Show("Укажиет корректный путь игры");
+                MessageBox.Show(errorFolder);
             }
         }
 
@@ -166,13 +204,14 @@ namespace WTTextPersonalizator
                 if (languageCombo.SelectedIndex == 0)
                 {
                     Properties.Settings.Default.Language = "ru";
-                    Properties.Settings.Default.Save();
                 }
                 else
                 {
                     Properties.Settings.Default.Language = "en";
-                    Properties.Settings.Default.Save();
                 }
+
+                Properties.Settings.Default.Save();
+                //Properties.Settings.Default.ShowInstruction = true;
                 MainWindow mw = new MainWindow();
                 mw.Show();
                 this.Close();

@@ -13,6 +13,10 @@ namespace WTTextPersonalizator
         public string chooseFolderButton = "";
         public string remeberCheck = "";
         public string launchButton = "";
+        public string errorFolder = "";
+        public string letsFixThat = "";
+        public string nowReload = "";
+        public string justReload = "";
         //workingframe
         //comboItems
         public string toBattle = "";
@@ -88,6 +92,10 @@ namespace WTTextPersonalizator
                 chooseFolderButton = "Выбрать папку с игрой";
                 remeberCheck = "Запомнить";
                 launchButton = "Запустить";
+                errorFolder = "Укажите корректный путь игры";
+                letsFixThat = "Путь указан корректно, но папка /lang отутсвует. Чтобы она появилась необходимо внести изменения в файл config.blk, а после запустить игру, выполнить?";
+                justReload = "Ой! Изменения в файл уже были внесены, но папки /lang нету. Похоже, что надо просто запустить игру, дождаться прогрузки ангара и выйти из нее";
+                nowReload = "Отлично! Изменения внесены успешно. Теперь просто запустите игру, дождитесь прогрузки ангара и выйдите из нее";
                 //workingframe
                 //comboitems
                 toBattle = "В бой!";
@@ -159,6 +167,10 @@ namespace WTTextPersonalizator
                 chooseFolderButton = "Choose game folder";
                 remeberCheck = "Remember";
                 launchButton = "Launch";
+                errorFolder = "Specify the correct path of the game";
+                letsFixThat = "The path is specified correctly, but the /lang folder is missing. In order for it to appear, you need to make changes to the config.blk file, and then launch the game, do it?";
+                justReload = "Oh! Changes have already been made to the file, but there is no /lang folder. It seems that you just need to start the game, wait for the hangar to load and exit it";
+                nowReload = "Great! The changes were made successfully. Now just start the game, wait for the hangar to load and exit it";
                 //workingframe
                 //comboitems
                 toBattle = "To Battle!";

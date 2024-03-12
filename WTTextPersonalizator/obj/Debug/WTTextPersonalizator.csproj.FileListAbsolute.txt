@@ -22,3 +22,27 @@ C:\Users\alexc\OneDrive\Рабочий стол\материалы\WTTextPersona
 C:\Users\alexc\OneDrive\Рабочий стол\материалы\WTTextPersonalizator\WTTextPersonalizator\obj\Debug\WTTextPersonalizator.application
 C:\Users\alexc\OneDrive\Рабочий стол\материалы\WTTextPersonalizator\WTTextPersonalizator\obj\Debug\Instruction.g.cs
 C:\Users\alexc\OneDrive\Рабочий стол\материалы\WTTextPersonalizator\WTTextPersonalizator\obj\Debug\Instruction.baml
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\bin\Debug\WTTextPersonalizator.exe.config
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\bin\Debug\WTTextPersonalizator.exe.manifest
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\bin\Debug\WTTextPersonalizator.application
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\bin\Debug\WTTextPersonalizator.exe
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\bin\Debug\WTTextPersonalizator.pdb
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\WTTextPersonalizator.csproj.AssemblyReference.cache
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\WTTextPersonalizator.csproj.SuggestedBindingRedirects.cache
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\Instruction.g.cs
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\MainWindow.g.cs
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\WorkingFrame.g.cs
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\App.g.cs
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\WTTextPersonalizator_MarkupCompile.cache
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\WTTextPersonalizator_MarkupCompile.lref
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\Instruction.baml
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\MainWindow.baml
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\WorkingFrame.baml
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\WTTextPersonalizator.g.resources
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\WTTextPersonalizator.Properties.Resources.resources
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\WTTextPersonalizator.csproj.GenerateResource.cache
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\WTTextPersonalizator.csproj.CoreCompileInputs.cache
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\WTTextPersonalizator.exe.manifest
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\WTTextPersonalizator.application
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\WTTextPersonalizator.exe
+C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Debug\WTTextPersonalizator.pdb

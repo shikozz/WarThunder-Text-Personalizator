@@ -71,6 +71,7 @@ namespace WTTextPersonalizator
         {
             InitializeComponent();
             //checkIfGameIsRunning();
+            Properties.Settings.Default.ShowInstruction = false;
             SetLanguage();
             mainPath= path;
             instalConfig.Visibility = Visibility.Hidden;
