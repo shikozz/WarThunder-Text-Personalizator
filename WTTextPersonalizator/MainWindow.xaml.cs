@@ -29,10 +29,10 @@ namespace WTTextPersonalizator
         private bool langB=false;
         private bool isPathLoaded = false;
         public string selectedFolder = "";
-        public string errorFolder = "";
-        public string letsFixThat = "";
-        public string justReload = "";
-        public string nowReload = "";
+        public string cantFindFolder = "";
+        public string messageAddToConfig = "";
+        public string justRGame = "";
+        public string nowRGame = "";
         public MainWindow()
         {
             InitializeComponent();
@@ -64,10 +64,10 @@ namespace WTTextPersonalizator
             chooseFolderBtn.Content = langRes.chooseFolderButton;
             remeber.Content = langRes.remeberCheck;
             launchBtn.Content = langRes.launchButton;
-            errorFolder = langRes.errorFolder;
-            letsFixThat = langRes.letsFixThat;
-            justReload = langRes.justReload;
-            nowReload = langRes.nowReload;
+            cantFindFolder = langRes.cantFindFolder;
+            messageAddToConfig = langRes.messageAddToConfig;
+            justRGame = langRes.justRGame;
+            nowRGame = langRes.nowRGame;
         }
 
         public void language()
@@ -160,7 +160,7 @@ namespace WTTextPersonalizator
                     {
 
                     };*/
-                    DialogResult dlgRes = System.Windows.Forms.MessageBox.Show(letsFixThat, "???", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult dlgRes = System.Windows.Forms.MessageBox.Show(messageAddToConfig, "???", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dlgRes == System.Windows.Forms.DialogResult.Yes)
                     {
                         StreamReader config_blk = new StreamReader(path);
@@ -169,21 +169,21 @@ namespace WTTextPersonalizator
                         int index = config.IndexOf("testLocalization:b=yes");
                         if (index > 0)
                         {
-                            MessageBox.Show(justReload);
+                            MessageBox.Show(justRGame);
                         }
                         else
                         {
                             int indexFindtoInsert = config.IndexOf("debug{");
                             string res = config.Insert(indexFindtoInsert+6, Environment.NewLine+"testLocalization:b=yes");
                             File.WriteAllText(path, res);
-                            MessageBox.Show(nowReload);
+                            MessageBox.Show(nowRGame);
                         }
                     }
                 }  
             }
             catch 
             {
-                MessageBox.Show(errorFolder);
+                MessageBox.Show(cantFindFolder);
             }
         }
 
