@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -12,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
 using System.Globalization;
@@ -57,7 +57,32 @@ namespace WTTextPersonalizator
                 nw.ShowDialog();
             }
             langB= true;
-            
+            Style stl = new Style(typeof(System.Windows.Controls.Button));
+            Trigger trg = new Trigger
+            {
+                Property = System.Windows.Controls.Button.IsMouseOverProperty,
+                Value = true
+            };
+            trg.Setters.Add(new Setter 
+            { 
+                Property = System.Windows.Controls.Button.BackgroundProperty,
+                Value = Brushes.White
+            });
+            Trigger trgF = new Trigger
+            {
+                Property = System.Windows.Controls.Button.IsMouseOverProperty,
+                Value = false
+            };
+            trgF.Setters.Add(new Setter 
+            { 
+                Property = System.Windows.Controls.Button.BackgroundProperty,
+                Value = Brushes.Gray
+            });
+            stl = chooseFolderBtn.Style;
+            //stl.Triggers.Clear();
+            stl.Triggers.Add(trg);
+            stl.Triggers.Add(trgF);
+            chooseFolderBtn.Style = stl;
         }
 
         public void setLanguage()

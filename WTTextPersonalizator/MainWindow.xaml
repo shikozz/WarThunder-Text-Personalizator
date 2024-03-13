@@ -8,7 +8,24 @@
         Title="WTTP" Height="240" MaxHeight="240" MinHeight="240" Width="300" MaxWidth="300" MinWidth="300">
     <Grid>
         <StackPanel Orientation="Vertical">
-            <Button x:Name="chooseFolderBtn" Content="Выбрать папку с игрой" Width="150" Height="50" Click="Button_Click"/>
+            <Button x:Name="chooseFolderBtn" Content="Выбрать папку с игрой" Width="150" Height="50" Click="Button_Click">
+                <Button.Style>
+                    <Style TargetType="Button" x:Name="ButtonStyle">
+                        <Setter Property="OverridesDefaultStyle" Value="True"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border BorderThickness="0.5" BorderBrush="Black">
+                                        <Grid Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
             <ComboBox x:Name="languageCombo" Text="Язык" Height="30" SelectionChanged="languageCombo_SelectionChanged">
                 <ComboBoxItem>
                     <StackPanel Orientation="Horizontal">
