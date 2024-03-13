@@ -18,6 +18,7 @@ using System.IO;
 using System.Globalization;
 using System.Runtime.InteropServices.ComTypes;
 using MessageBox = System.Windows.MessageBox;
+using System.Drawing;
 
 namespace WTTextPersonalizator
 {
@@ -56,6 +57,7 @@ namespace WTTextPersonalizator
                 nw.ShowDialog();
             }
             langB= true;
+            
         }
 
         public void setLanguage()
@@ -122,11 +124,11 @@ namespace WTTextPersonalizator
             try
             {
                 string path = label.Text + "/config.blk";
-                //string testStr = "";
-                /*using (StreamReader reader = new StreamReader(path))
+                string testStr = "";
+                using (StreamReader reader = new StreamReader(path))
                 {
                     testStr = reader.ReadToEnd();
-                }*/
+                }
                 //path = label.Text + "/lang";
                 if(Directory.Exists(label.Text+"/lang"))
                 {
@@ -217,5 +219,6 @@ namespace WTTextPersonalizator
                 this.Close();
             }
         }
+
     }
 }
