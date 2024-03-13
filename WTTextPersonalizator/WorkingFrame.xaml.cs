@@ -214,7 +214,13 @@ namespace WTTextPersonalizator
                     string resConfig = "";
                     string changeFromConfig = "";
                     int indexFind = configString.IndexOf(init);
-                    if (indexFind >= 0)
+                    int falseIndex = 0;
+                    try
+                    {
+                        falseIndex= configString.IndexOf(goChange);
+                    }
+                    catch{}
+                    if (indexFind >= 0 && falseIndex<0)
                     {
                         indexFind += init.Length + 1;
                         int indexSymbol = configString.IndexOf('|', indexFind);
@@ -314,10 +320,9 @@ namespace WTTextPersonalizator
             checkIfGameIsRunning();
             if (!gameRunnig)
             {
-                string goChange = "\"" + text2.Text + "\"";
+            string goChange = "\"" + text2.Text + "\"";
             string res = "";
             string init = "\"" + init2.Text + "\"";
-
             string resConfig = "";
             string changeFromConfig = "";
                 if (text2.Text == "" || init2.Text == "")
@@ -325,7 +330,13 @@ namespace WTTextPersonalizator
                 else
                 {
                     int indexFind = configString.IndexOf(init);
-                    if (indexFind >= 0)
+                    int falseIndex = 0;
+                    try
+                    {
+                        falseIndex = configString.IndexOf(goChange);
+                    }
+                    catch { }
+                    if (indexFind >= 0 && falseIndex<0)
                     {
                         indexFind += init.Length + 1;
                         int indexSymbol = configString.IndexOf('|', indexFind);

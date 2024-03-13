@@ -137,7 +137,7 @@ namespace WTTextPersonalizator
                 instructionBtn = "Инструкция";
                 //messageBoxes
                 changesSucces = "Изменено успешно";
-                notFound = "Не найдено";
+                notFound = "Не найдено или такое же значение уже записано";
                 stopSavingConfig = "Вы уверены, что хотите отключить сохранение конфигурации?\nВ таком случае для обновления надписей вам \nпридется указать текущее значение!";
                 saveToAnotherDir = "Сохраните файл в другую папку, отличную от корневой директивы игры";
                 cannotSaveInGameDir = "Нельзя сохранить конфигурацию в эту папку";
@@ -212,7 +212,7 @@ namespace WTTextPersonalizator
                 instructionBtn = "Instruction";
                 //messageBoxes
                 changesSucces = "Changed Successfully";
-                notFound = "Not found 404";
+                notFound = "Not found or the same value has already been written";
                 stopSavingConfig = "Are you sure you want to disable config saving?\nIn this case, to update the labels,\nyou need to specify the current value!";
                 saveToAnotherDir = "Save the file to a different folder than the root directive of the game";
                 cannotSaveInGameDir = "You cannot save the configuration to this folder";

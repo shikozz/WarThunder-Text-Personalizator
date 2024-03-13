@@ -57,7 +57,7 @@ namespace WTTextPersonalizator
                 nw.ShowDialog();
             }
             langB= true;
-            Style stl = new Style(typeof(System.Windows.Controls.Button));
+           /* Style stl = new Style(typeof(System.Windows.Controls.Button));
             Trigger trg = new Trigger
             {
                 Property = System.Windows.Controls.Button.IsMouseOverProperty,
@@ -82,7 +82,7 @@ namespace WTTextPersonalizator
             //stl.Triggers.Clear();
             stl.Triggers.Add(trg);
             stl.Triggers.Add(trgF);
-            chooseFolderBtn.Style = stl;
+            chooseFolderBtn.Style = stl;*/
         }
 
         public void setLanguage()
