@@ -57,32 +57,6 @@ namespace WTTextPersonalizator
                 nw.ShowDialog();
             }
             langB= true;
-           /* Style stl = new Style(typeof(System.Windows.Controls.Button));
-            Trigger trg = new Trigger
-            {
-                Property = System.Windows.Controls.Button.IsMouseOverProperty,
-                Value = true
-            };
-            trg.Setters.Add(new Setter 
-            { 
-                Property = System.Windows.Controls.Button.BackgroundProperty,
-                Value = Brushes.White
-            });
-            Trigger trgF = new Trigger
-            {
-                Property = System.Windows.Controls.Button.IsMouseOverProperty,
-                Value = false
-            };
-            trgF.Setters.Add(new Setter 
-            { 
-                Property = System.Windows.Controls.Button.BackgroundProperty,
-                Value = Brushes.Gray
-            });
-            stl = chooseFolderBtn.Style;
-            //stl.Triggers.Clear();
-            stl.Triggers.Add(trg);
-            stl.Triggers.Add(trgF);
-            chooseFolderBtn.Style = stl;*/
         }
 
         public void setLanguage()

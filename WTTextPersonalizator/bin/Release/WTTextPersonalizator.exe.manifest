@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WTTextPersonalizator.exe" size="599984">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WTTextPersonalizator.exe" size="603056">
       <assemblyIdentity name="WTTextPersonalizator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ho0dB58XbncelTjk7C8jEOT/+z9qOkNwY7VWNLAgMAI=</dsig:DigestValue>
+        <dsig:DigestValue>7QuZGbaOf1SrQhgXRGG1XxL5qQkDp1jgXVU3Svz4XrQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
