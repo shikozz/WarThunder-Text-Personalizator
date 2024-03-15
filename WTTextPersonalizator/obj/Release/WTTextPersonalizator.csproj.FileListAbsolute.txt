@@ -47,3 +47,6 @@ C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personali
 C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Release\WTTextPersonalizator.exe
 C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Release\WTTextPersonalizator.pdb
 C:\Users\Systemadmin\Desktop\админа\гитхаб\WarThunder-Text-Personalizator\WTTextPersonalizator\obj\Release\App.baml
+C:\Users\alexc\OneDrive\Рабочий стол\материалы\WTTextPersonalizator\WTTextPersonalizator\obj\Release\App.baml
+C:\Users\alexc\OneDrive\Рабочий стол\материалы\WTTextPersonalizator\WTTextPersonalizator\obj\Release\donate.g.cs
+C:\Users\alexc\OneDrive\Рабочий стол\материалы\WTTextPersonalizator\WTTextPersonalizator\obj\Release\donate.baml

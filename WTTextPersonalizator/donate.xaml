@@ -1,0 +1,16 @@
+﻿<Window x:Class="WTTextPersonalizator.donate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WTTextPersonalizator"
+        mc:Ignorable="d"
+        Title="Donation =)" Height="280" Width="350" MinHeight="280" MaxHeight="280" MinWidth="350" MaxWidth="350">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Image Source="qr.png" Width="180"/>
+            <Button Content="Тык" Height="20" Width="50" Margin="5" x:Name="press" Click="press_Click"/>
+            <TextBox x:Name="donatelink" Text="https://www.donationalerts.com/r/shikozzrevenge" HorizontalContentAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>

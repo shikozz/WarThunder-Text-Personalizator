@@ -5,183 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WTTextPersonalizator"
         mc:Ignorable="d"
-        Title="WTTP" MinHeight="450" MaxHeight="450" Height="450" Width="800" MinWidth="800" MaxWidth="800">
+        Title="WTTP" MinHeight="450" MaxHeight="450" Height="450" Width="900" MinWidth="900" MaxWidth="900">
     <Window.Resources>
 
-        <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="20" />
-                </Grid.ColumnDefinitions>
-                <Border
-                  x:Name="Border" 
-                  Grid.ColumnSpan="2"
-                  CornerRadius="0"
-                  Background="LightGray"
-                  BorderBrush="Gray"
-                  BorderThickness="1" />
-                <Border 
-                  Grid.Column="0"
-                  CornerRadius="0" 
-                  Margin="1" 
-                  Background="LightGray" 
-                  BorderBrush="Gray"
-                  BorderThickness="0,0,1,0" />
-                <Path 
-                  x:Name="Arrow"
-                  Grid.Column="1"     
-                  Fill="Black"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Center"
-                  Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"
-                />
-            </Grid>
-        </ControlTemplate>
-
-        <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
-            <Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
-        </ControlTemplate>
-
-        <Style x:Key="{x:Type ComboBox}" TargetType="{x:Type ComboBox}">
-            <Setter Property="SnapsToDevicePixels" Value="False"/>
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
-            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
-            <Setter Property="MinWidth" Value="120"/>
-            <Setter Property="MinHeight" Value="20"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ComboBox}">
-                        <Grid>
-                            <ToggleButton 
-                            Name="ToggleButton" 
-                            Template="{StaticResource ComboBoxToggleButton}" 
-                            Grid.Column="2" 
-                            Focusable="false"
-                            IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
-                            ClickMode="Press">
-                            </ToggleButton>
-                            <ContentPresenter Name="ContentSite" IsHitTestVisible="False"  Content="{TemplateBinding SelectionBoxItem}"
-                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                            Margin="3,3,23,3"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left" />
-                            <TextBox x:Name="PART_EditableTextBox"
-                            Style="{x:Null}" 
-                            Template="{StaticResource ComboBoxTextBox}" 
-                            HorizontalAlignment="Left" 
-                            VerticalAlignment="Center" 
-                            Margin="3,3,23,3"
-                            Focusable="True" 
-                            Background="LightGray"
-                            Foreground="Red"
-                            Visibility="Hidden"
-                            IsReadOnly="{TemplateBinding IsReadOnly}"/>
-                            <Popup 
-                            Name="Popup"
-                            Placement="Bottom"
-                            IsOpen="{TemplateBinding IsDropDownOpen}"
-                            AllowsTransparency="True" 
-                            Focusable="False"
-                            PopupAnimation="Slide">
-
-                                <Grid Name="DropDown"
-                              SnapsToDevicePixels="True"                
-                              MinWidth="{TemplateBinding ActualWidth}"
-                              MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                    <Border 
-                                x:Name="DropDownBorder"
-                                Background="LightGray"
-
-                                BorderThickness="1"
-                                BorderBrush="#888888"/>
-                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
-                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
-                                    </ScrollViewer>
-                                </Grid>
-                            </Popup>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="HasItems" Value="false">
-                                <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Foreground" Value="DarkGray"/>
-                            </Trigger>
-                            <Trigger Property="IsGrouping" Value="true">
-                                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
-                            </Trigger>
-                            <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
-                                <Setter TargetName="DropDownBorder" Property="CornerRadius" Value="0"/>
-                                <Setter TargetName="DropDownBorder" Property="Margin" Value="0,2,0,0"/>
-                            </Trigger>
-                            <Trigger Property="IsEditable"  Value="true">
-                                <Setter Property="IsTabStop" Value="false"/>
-                                <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
-                                <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-            </Style.Triggers>
-        </Style>
-
-        <!-- SimpleStyles: ComboBoxItem -->
-        <Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}">
-            <Setter Property="SnapsToDevicePixels" Value="False"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="VerticalAlignment" Value="Stretch"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
-                        <Border Name="Border"
-                              Padding="0"
-                              SnapsToDevicePixels="true">
-                            <ContentPresenter />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsHighlighted" Value="true">
-                                <Setter TargetName="Border" Property="Background" Value="DarkGray"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Foreground" Value="DarkGray"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="Button">
-            <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border BorderThickness="0.5" BorderBrush="Black">
-                            <Grid Background="{TemplateBinding Background}">
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </Grid>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="DarkGray"></Setter>
-                </Trigger>
-                <Trigger Property="IsMouseOver" Value="False">
-                    <Setter Property="Background" Value="LightGray" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+      
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -195,13 +22,13 @@
             <Label x:Name="changeMenu" Content="Изменения в файле menu.csv (В бой, Техника уничтожена, Попадание и т.д.)"/>
             <StackPanel Orientation="Horizontal">
                 <Label x:Name="frequentOptions" Content="Частые варианты" Width="135"/>
-                <ComboBox x:Name="combo1" Width="150" SelectionChanged="combo1_SelectionChanged"/>
+                <ComboBox x:Name="combo1" Width="180" SelectionChanged="combo1_SelectionChanged" Foreground="Black"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label x:Name="initValue" Content="Начальное значение"/>
-                <TextBox Width="151" x:Name="init1" BorderBrush="Black" BorderThickness="1"/>
+                <TextBox Width="180" x:Name="init1" BorderBrush="Black" BorderThickness="1"/>
                 <Label x:Name="endValue" Content="Конечное значение"/>
-                <TextBox x:Name="text1" Width="150" BorderBrush="Black" BorderThickness="1"/>
+                <TextBox x:Name="text1" Width="180" BorderBrush="Black" BorderThickness="1"/>
                 <Button x:Name="change1" Click="change1_Click" Width="100" Content="Поменять" Margin="5,0,0,0"/>
                 <Button x:Name="clear1" Width="100" Content="Очистить" Click="clear1_Click" Margin="5,0,0,0"/>
             </StackPanel>
@@ -212,13 +39,13 @@
             <Label x:Name="changeUi" Content="Изменения в файле ui.csv (Миссия выполнена, Миссия провалена, Начать тушить пожар)"/>
             <StackPanel Orientation="Horizontal">
                 <Label x:Name="frequentOptions1" Content="Частые варианты" Width="135"/>
-                <ComboBox x:Name="combo2" Width="150" SelectionChanged="combo2_SelectionChanged"/>
+                <ComboBox x:Name="combo2" Width="180" SelectionChanged="combo2_SelectionChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label x:Name="initValue1" Content="Начальное значение"/>
-                <TextBox Width="151" x:Name="init2" BorderBrush="Black" BorderThickness="1"/>
+                <TextBox Width="180" x:Name="init2" BorderBrush="Black" BorderThickness="1"/>
                 <Label x:Name="endValue1" Content="Конечное значение"/>
-                <TextBox x:Name="text2" Width="150" BorderBrush="Black" BorderThickness="1"/>
+                <TextBox x:Name="text2" Width="180" BorderBrush="Black" BorderThickness="1"/>
                 <Button x:Name="change2" Click="change2_Click" Width="100" Content="Поменять" Margin="5,0,0,0"/>
                 <Button x:Name="clear2" Width="100" Content="Очистить" Click="clear2_Click" Margin="5,0,0,0"/>
             </StackPanel>
@@ -230,7 +57,8 @@
             <Button x:Name="loadConfig" Content="Загрузить конфиг" Click="loadConfig_Click" Height="30" Width="150"/>
             <Button x:Name="instalConfig" Content="Установить" Click="instalConfig_Click" Width="150"/>
             <ProgressBar Name="myProgressBar" IsIndeterminate="True" Visibility="Hidden" Width="160"/>
-            <Button x:Name="instruction" Content="Инструкция" Margin="0,0,0,0" Click="instruction_Click"/>
+            <Button x:Name="instruction" Content="Инструкция" Width="80" Margin="0,0,5,0" Click="instruction_Click"/>
+            <Button x:Name="helpMe" Width="100" Content="Поддержать" Click="helpMe_Click"/>
         </StackPanel>
     </Grid>
 </Window>

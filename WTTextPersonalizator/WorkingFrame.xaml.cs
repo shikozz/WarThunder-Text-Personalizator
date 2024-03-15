@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -449,15 +450,9 @@ namespace WTTextPersonalizator
             if (!gameRunnig)
             {
                 string initTextString = combo1.SelectedItem.ToString();
-                string subInitTextString = "";
-                int i = 0;
-                while (initTextString[i]!='\t')
-                {
-                    subInitTextString += initTextString[i];
-                    i++;
-                }
-                i = 0;
-                init1.Text = subInitTextString;
+                initTextString= initTextString.Trim();
+                init1.Text = initTextString;
+
             }
         }
 
@@ -466,7 +461,9 @@ namespace WTTextPersonalizator
             checkIfGameIsRunning();
             if (!gameRunnig)
             {
-                init2.Text = combo2.SelectedItem.ToString();
+                string initTextString = combo2.SelectedItem.ToString();
+                initTextString= initTextString.Trim(); 
+                init2.Text = initTextString;
             }
         }
 
@@ -593,6 +590,12 @@ namespace WTTextPersonalizator
         {
             myProgressBar.Visibility = Visibility.Hidden;
             instalConfig.Visibility = Visibility.Hidden;
+        }
+
+        private void helpMe_Click(object sender, RoutedEventArgs e)
+        {
+            donate don = new donate();
+            don.ShowDialog();
         }
     }
 }
