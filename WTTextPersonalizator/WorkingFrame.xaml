@@ -5,10 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WTTextPersonalizator"
         mc:Ignorable="d"
-        Title="WTTP" MinHeight="450" MaxHeight="450" Height="450" Width="900" MinWidth="900" MaxWidth="900">
+        Title="WTTP" MinHeight="450" MaxHeight="450" Height="450" Width="900" MinWidth="900" MaxWidth="900" Background="#FFE0D5C7">
     <Window.Resources>
-
-      
+        
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -26,9 +25,9 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label x:Name="initValue" Content="Начальное значение"/>
-                <TextBox Width="180" x:Name="init1" BorderBrush="Black" BorderThickness="1"/>
+                <TextBox Width="180" x:Name="init1"  BorderThickness="1"/>
                 <Label x:Name="endValue" Content="Конечное значение"/>
-                <TextBox x:Name="text1" Width="180" BorderBrush="Black" BorderThickness="1"/>
+                <TextBox x:Name="text1" Width="180"  BorderThickness="1" SelectionBrush="#FF969263"/>
                 <Button x:Name="change1" Click="change1_Click" Width="100" Content="Поменять" Margin="5,0,0,0"/>
                 <Button x:Name="clear1" Width="100" Content="Очистить" Click="clear1_Click" Margin="5,0,0,0"/>
             </StackPanel>
@@ -43,9 +42,9 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label x:Name="initValue1" Content="Начальное значение"/>
-                <TextBox Width="180" x:Name="init2" BorderBrush="Black" BorderThickness="1"/>
+                <TextBox Width="180" x:Name="init2" BorderThickness="1"/>
                 <Label x:Name="endValue1" Content="Конечное значение"/>
-                <TextBox x:Name="text2" Width="180" BorderBrush="Black" BorderThickness="1"/>
+                <TextBox x:Name="text2" Width="180" BorderThickness="1"/>
                 <Button x:Name="change2" Click="change2_Click" Width="100" Content="Поменять" Margin="5,0,0,0"/>
                 <Button x:Name="clear2" Width="100" Content="Очистить" Click="clear2_Click" Margin="5,0,0,0"/>
             </StackPanel>

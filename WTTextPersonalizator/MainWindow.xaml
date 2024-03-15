@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WTTextPersonalizator"
         mc:Ignorable="d"
-        Title="WTTP" FontFamily="Century Gothic" Height="240" MaxHeight="240" MinHeight="240" Width="300" MaxWidth="300" MinWidth="300">
+        Title="WTTP" FontFamily="Century Gothic" Height="240" MaxHeight="240" MinHeight="240" Width="300" MaxWidth="300" MinWidth="300" Background="#FFE0D5C7">
     <Window.Resources>
         
     </Window.Resources>
@@ -28,7 +28,7 @@
                     </StackPanel>
                 </ComboBoxItem>
             </ComboBox>
-            <TextBox x:Name="label" Height="50" BorderBrush="Black" BorderThickness="1"/>
+            <TextBox x:Name="label" Height="50" BorderThickness="1"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Label x:Name="remeber" Content="Запомнить"/>
                 <CheckBox x:Name="saveSet"  VerticalAlignment="Center" Margin="0,0,5,0" Checked="saveSet_Checked"/>
