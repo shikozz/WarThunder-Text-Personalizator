@@ -161,7 +161,7 @@ namespace WTTextPersonalizator
                     {
 
                     };*/
-                    DialogResult dlgRes = System.Windows.Forms.MessageBox.Show(messageAddToConfig, "???", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult dlgRes = System.Windows.Forms.MessageBox.Show(messageAddToConfig, "???", MessageBoxButtons.YesNo, MessageBoxIcon.Question, "msgBoxStyle");
                     if (dlgRes == System.Windows.Forms.DialogResult.Yes)
                     {
                         StreamReader config_blk = new StreamReader(path);

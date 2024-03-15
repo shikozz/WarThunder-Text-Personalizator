@@ -98,27 +98,29 @@ namespace WTTextPersonalizator
                 nowRGame = "Отлично! Изменения внесены успешно. Теперь просто запустите игру, дождитесь прогрузки ангара и выйдите из нее";
                 //workingframe
                 //comboitems
-                toBattle = "В бой!";
-                enemyDestroyed = "Техника уничтожена";
-                planeDestroyed = "Самолёт сбит";
-                asist = "Помощь в уничтожении противника";
-                hit = "Попадание";
-                captureZone = "Зона захвачена";
-                kaboom = "Взрыв боекомплекта";
-                noPen = "Не пробил";
-                ricoshet = "Рикошет";
-                noDamage = "Цель не была повреждена";
-                crewDestroyed = "Экипаж выведен из строя";
-                critDamage = "Критический урон";
-                critDmg = "Критические повреждения";
-                scout = "Цель разведана";
-                scoutDamage = "Разведанная цель получила урон";
-                scoutDestroyed = "Разведанная цель уничтожена (по разведданным)";
-                returnToHangar = "Вернуться в ангар";
-                missionWin = "Миссия выполнена";
-                missionLost = "Миссия провалена";
-                repair = "удерживайте, чтобы начать ремонт танка";
-                fire = "Начать тушить пожар";
+                //menu.csv
+                toBattle =          "В бой!                                         ";
+                enemyDestroyed =    "Техника уничтожена                             ";
+                planeDestroyed =    "Самолёт сбит                                   ";
+                asist =             "Помощь в уничтожении противника                ";
+                hit =               "Попадание                                      ";
+                captureZone =       "Зона захвачена                                 ";
+                kaboom =            "Взрыв боекомплекта                             ";
+                noPen =             "Не пробил                                      ";
+                ricoshet =          "Рикошет                                        ";
+                noDamage =          "Цель не была повреждена                        ";
+                crewDestroyed =     "Экипаж выведен из строя                        ";
+                critDamage =        "Критический урон                               ";
+                critDmg =           "Критические повреждения                        ";
+                scout =             "Цель разведана                                 ";
+                scoutDamage =       "Разведанная цель получила урон                 ";
+                scoutDestroyed =    "Разведанная цель уничтожена (по разведданным)  ";
+                returnToHangar =    "Вернуться в ангар                              ";
+                //ui.csv
+                missionWin =        "Миссия выполнена                               ";
+                missionLost =       "Миссия провалена                               ";
+                repair =            "удерживайте, чтобы начать ремонт танка         ";
+                fire =              "Начать тушить пожар                            ";
                 //labels
                 changeMenu = "Изменения в файле menu.csv (В бой, Техника уничтожена, Попадание и т.д.)";
                 frequentOptions = "Частые варианты";
@@ -173,27 +175,29 @@ namespace WTTextPersonalizator
                 nowRGame = "Great! The changes were made successfully. Now just start the game, wait for the hangar to load and exit it";
                 //workingframe
                 //comboitems
-                toBattle = "To Battle!";
-                enemyDestroyed = "Target destroyed";
-                planeDestroyed = "Aircraft destroyed";
-                asist = "Enemy Kill Assist";
-                hit = "Hit";
-                captureZone = "Zone captured";
-                kaboom = "Ammunition exploded";
-                noPen = "Non-penetration";
-                ricoshet = "Ricochet";
-                noDamage = "Target undamaged";
-                crewDestroyed = "Crew knocked out";
-                critDamage = "Critical Hit";
-                critDmg = "Critical hit";
-                scout = "Target scouted";
-                scoutDamage = "Scouted target damaged";
-                scoutDestroyed = "Scouted target destroyed (by intelligence)";
-                returnToHangar = "Return to the Hangar";
-                missionWin = "Mission Accomplished";
-                missionLost = "Mission Failed";
-                repair = "hold to start repairing the ground vehicle";
-                fire = "Activate extinguisher";
+                //menu.csv
+                toBattle =          "To Battle!                                 ";
+                enemyDestroyed =    "Target destroyed                           ";
+                planeDestroyed =    "Aircraft destroyed                         ";
+                asist =             "Enemy Kill Assist                          ";
+                hit =               "Hit                                        ";
+                captureZone =       "Zone captured                              ";
+                kaboom =            "Ammunition exploded                        ";
+                noPen =             "Non-penetration                            ";
+                ricoshet =          "Ricochet                                   ";
+                noDamage =          "Target undamaged                           ";
+                crewDestroyed =     "Crew knocked out                           ";
+                critDamage =        "Critical Hit                               ";
+                critDmg =           "Critical hit                               ";
+                scout =             "Target scouted                             ";
+                scoutDamage =       "Scouted target damaged                     ";
+                scoutDestroyed =    "Scouted target destroyed (by intelligence) ";
+                returnToHangar =    "Return to the Hangar                       ";
+                //ui.csv
+                missionWin =        "Mission Accomplished                       ";
+                missionLost =       "Mission Failed                             ";
+                repair =            "hold to start repairing the ground vehicle ";
+                fire =              "Activate extinguisher                      ";
                 //labels
                 changeMenu = "Changes in menu.csv file";
                 frequentOptions = "Frequent Options";

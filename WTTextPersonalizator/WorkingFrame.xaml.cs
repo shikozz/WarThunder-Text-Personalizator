@@ -448,7 +448,16 @@ namespace WTTextPersonalizator
             checkIfGameIsRunning();
             if (!gameRunnig)
             {
-                init1.Text = combo1.SelectedItem.ToString();
+                string initTextString = combo1.SelectedItem.ToString();
+                string subInitTextString = "";
+                int i = 0;
+                while (initTextString[i]!='\t')
+                {
+                    subInitTextString += initTextString[i];
+                    i++;
+                }
+                i = 0;
+                init1.Text = subInitTextString;
             }
         }
 
