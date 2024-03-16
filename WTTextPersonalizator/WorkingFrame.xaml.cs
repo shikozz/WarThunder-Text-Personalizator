@@ -106,7 +106,14 @@ namespace WTTextPersonalizator
             combo2.Items.Add(missionLost);
             combo2.Items.Add(repair);
             combo2.Items.Add(fire);
-
+            if(Properties.Settings.Default.Language=="ru")
+            {
+                helpMe.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                helpMe.Visibility = Visibility.Hidden;
+            }
             /*Properties.Settings.Default.ShowInstruction= true;
             Properties.Settings.Default.Save();*/
 
