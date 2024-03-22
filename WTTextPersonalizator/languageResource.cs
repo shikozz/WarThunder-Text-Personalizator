@@ -40,6 +40,8 @@ namespace WTTextPersonalizator
         public string missionLost = "";
         public string repair = "";
         public string fire = "";
+        public string lostControl = "";
+        public string overload = "";
         //labels
         public string changeMenu = "";
         public string frequentOptions = "";
@@ -121,6 +123,9 @@ namespace WTTextPersonalizator
                 missionLost =       "Миссия провалена                               ";
                 repair =            "удерживайте, чтобы начать ремонт танка         ";
                 fire =              "Начать тушить пожар                            ";
+                //airthings
+                lostControl =       "ПОТЕРЯ УПРАВЛЕНИЯ                              ";
+                overload =          "ПЕРЕГРУЗКА                                     ";
                 //labels
                 changeMenu = "Изменения в файле menu.csv (В бой, Техника уничтожена, Попадание и т.д.)";
                 frequentOptions = "Частые варианты";
@@ -198,6 +203,9 @@ namespace WTTextPersonalizator
                 missionLost =       "Mission Failed                             ";
                 repair =            "hold to start repairing the ground vehicle ";
                 fire =              "Activate extinguisher                      ";
+                //air things
+                lostControl =       "LOST CONTROL                               ";
+                overload =          "OVERLOAD                                   ";
                 //labels
                 changeMenu = "Changes in menu.csv file";
                 frequentOptions = "Frequent Options";

@@ -55,6 +55,8 @@ namespace WTTextPersonalizator
         public string missionLost = "";
         public string repair = "";
         public string fire = "";
+        public string lostControl = "";
+        public string overload = "";
 
         public string saveConfigStr = "";
         public string notSaveConfigStr = "";
@@ -106,6 +108,8 @@ namespace WTTextPersonalizator
             combo2.Items.Add(missionLost);
             combo2.Items.Add(repair);
             combo2.Items.Add(fire);
+            combo2.Items.Add(overload);
+            combo2.Items.Add(lostControl);
             if(Properties.Settings.Default.Language=="ru")
             {
                 helpMe.Visibility = Visibility.Visible;
@@ -155,6 +159,8 @@ namespace WTTextPersonalizator
             missionLost= lr.missionLost;
             repair = lr.repair;
             fire = lr.fire;
+            overload= lr.overload;
+            lostControl= lr.lostControl;
             changeMenu.Content = lr.changeMenu;
             frequentOptions.Content= lr.frequentOptions;
             frequentOptions1.Content = lr.frequentOptions;
